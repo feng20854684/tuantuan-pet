@@ -2,10 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { draggedBounds, exceedsDragThreshold, snapBounds } from '../../src/main/drag';
 
-test('drag begins only at the four-pixel movement threshold', () => {
-  assert.equal(exceedsDragThreshold({ x: 10, y: 10 }, { x: 13, y: 10 }), false);
-  assert.equal(exceedsDragThreshold({ x: 10, y: 10 }, { x: 14, y: 10 }), true);
-  assert.equal(exceedsDragThreshold({ x: 0, y: 0 }, { x: 3, y: 3 }), true);
+test('drag begins only at the five-pixel movement threshold', () => {
+  assert.equal(exceedsDragThreshold({ x: 10, y: 10 }, { x: 14, y: 10 }), false);
+  assert.equal(exceedsDragThreshold({ x: 10, y: 10 }, { x: 15, y: 10 }), true);
+  assert.equal(exceedsDragThreshold({ x: 0, y: 0 }, { x: 3, y: 4 }), true);
 });
 
 test('dragged bounds preserve size and apply rounded cursor delta', () => {

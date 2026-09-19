@@ -5,7 +5,7 @@ import { createHash, randomUUID } from 'node:crypto';
 import specData from '../pet-spec.json';
 import type { InteractionResult, PetSpec, PetStats, Reminder, RuntimeFailureReport, RuntimeReadyReport, Settings, StateActivity, TypingStatus } from './shared/contracts';
 import { assertInteractionId, assertReminderInput, assertRuntimeFailureReport, assertRuntimeReadyReport, assertSettingsPatch, assertStringArray } from './shared/contracts';
-import { draggedBounds, snapBounds, type Point, type Rect } from './main/drag';
+import { draggedBounds, snapBounds, detectEdge, hiddenBounds, poppedBounds, type EdgeSide, type Point, type Rect } from './main/drag';
 import { JsonLogger } from './main/logger';
 import { atomicWriteJson, uniqueDestination } from './main/persistence';
 import { TypingListener } from './main/typing-listener';
@@ -27,6 +27,10 @@ let sessionStartedAt = Date.now();
 let typingStatus: TypingStatus = { enabled: false, reason: 'not-started' };
 let isQuitting = false;
 let dragSession: { bounds: Rect; cursor: Point } | undefined;
+let edgeState: 'idle' | 'hidden' | 'popped' = 'idle';
+let edgeSide: EdgeSide = null;
+let edgePollTimer: ReturnType<typeof setInterval> | undefined;
+let mouseOverSprite = false;
 let runtimeRendererReport: RuntimeReadyReport | undefined;
 const runtimeReadyRenderers = new Set<Role>();
 let runtimeWindowReady = false;
@@ -221,7 +225,98 @@ function applyPetSettings(): void {
   const size = petSize();
   petWindow.setSize(size, size, true);
   petWindow.setAlwaysOnTop(settings.alwaysOnTop);
-  petWindow.setIgnoreMouseEvents(settings.clickThrough, { forward: true });
+  updateMouseIgnore();
+}
+
+function updateMouseIgnore(): void {
+  if (!petWindow || petWindow.isDestroyed()) return;
+  // 静态穿透模式：用户主动开启
+  if (settings.clickThrough) {
+    petWindow.setIgnoreMouseEvents(true, { forward: true });
+    return;
+  }
+  // 动态穿透：鼠标在猫身上时响应事件，透明区域穿透
+  petWindow.setIgnoreMouseEvents(!mouseOverSprite, { forward: true });
+}
+
+function stopEdgePolling(): void {
+  if (edgePollTimer) {
+    clearInterval(edgePollTimer);
+    edgePollTimer = undefined;
+  }
+}
+
+function startEdgePolling(): void {
+  stopEdgePolling();
+  edgePollTimer = setInterval(() => {
+    if (!petWindow || petWindow.isDestroyed() || edgeState === 'idle') return;
+    const cursor = screen.getCursorScreenPoint();
+    const bounds = petWindow.getBounds();
+
+    if (edgeState === 'hidden') {
+      // 检测鼠标是否靠近露出的边缘条
+      const nearStrip = isCursorNearEdgeStrip(cursor, bounds, edgeSide);
+      if (nearStrip) {
+        popOutFromEdge();
+      }
+    } else if (edgeState === 'popped') {
+      // 鼠标离开窗口区域则收回
+      if (!isCursorInRect(cursor, bounds)) {
+        slideToEdge();
+      }
+    }
+  }, 150);
+}
+
+function isCursorInRect(cursor: Point, rect: Rect): boolean {
+  return cursor.x >= rect.x && cursor.x <= rect.x + rect.width
+    && cursor.y >= rect.y && cursor.y <= rect.y + rect.height;
+}
+
+function isCursorNearEdgeStrip(cursor: Point, bounds: Rect, side: EdgeSide): boolean {
+  const stripWidth = 40;
+  switch (side) {
+    case 'left':
+      return cursor.x >= bounds.x && cursor.x <= bounds.x + stripWidth
+        && cursor.y >= bounds.y - 10 && cursor.y <= bounds.y + bounds.height + 10;
+    case 'right':
+      return cursor.x <= bounds.x + bounds.width && cursor.x >= bounds.x + bounds.width - stripWidth
+        && cursor.y >= bounds.y - 10 && cursor.y <= bounds.y + bounds.height + 10;
+    case 'top':
+      return cursor.y >= bounds.y && cursor.y <= bounds.y + stripWidth
+        && cursor.x >= bounds.x - 10 && cursor.x <= bounds.x + bounds.width + 10;
+    case 'bottom':
+      return cursor.y <= bounds.y + bounds.height && cursor.y >= bounds.y + bounds.height - stripWidth
+        && cursor.x >= bounds.x - 10 && cursor.x <= bounds.x + bounds.width + 10;
+    default:
+      return false;
+  }
+}
+
+function slideToEdge(): void {
+  if (!petWindow || !edgeSide) return;
+  const point = screen.getCursorScreenPoint();
+  const display = screen.getDisplayNearestPoint(point);
+  const workArea = display.workArea;
+  const bounds = petWindow.getBounds();
+  const hidden = hiddenBounds(edgeSide, bounds, workArea);
+  petWindow.setBounds(hidden, true);
+  edgeState = 'hidden';
+  startEdgePolling();
+}
+
+function popOutFromEdge(): void {
+  if (!petWindow || !edgeSide) return;
+  const point = screen.getCursorScreenPoint();
+  const display = screen.getDisplayNearestPoint(point);
+  const workArea = display.workArea;
+  const bounds = petWindow.getBounds();
+  const popped = poppedBounds(edgeSide, bounds, workArea);
+  petWindow.setBounds(popped, true);
+  edgeState = 'popped';
+  const state = stateForTrigger('window:edge-snap');
+  sendActivity({ kind: 'edge-snap', stateId: state?.id, durationMs: 900 });
+  startEdgePolling();
 }
 
 function positionAbovePet(window: BrowserWindow): void {
@@ -605,10 +700,32 @@ function registerIpc(): void {
     dragSession = undefined;
     if (settings.edgeSnap) {
       const point = screen.getCursorScreenPoint();
-      const workArea = screen.getDisplayNearestPoint(point).workArea;
-      petWindow.setBounds(snapBounds(petWindow.getBounds(), workArea), true);
-      const state = stateForTrigger('window:edge-snap');
-      sendActivity({ kind: 'edge-snap', stateId: state?.id, durationMs: 900 });
+      const display = screen.getDisplayNearestPoint(point);
+      const workArea = display.workArea;
+      const bounds = petWindow.getBounds();
+      const side = detectEdge(bounds, workArea);
+      if (side) {
+        edgeSide = side;
+        const hidden = hiddenBounds(side, bounds, workArea);
+        petWindow.setBounds(hidden, true);
+        edgeState = 'hidden';
+        startEdgePolling();
+        const state = stateForTrigger('window:edge-snap');
+        sendActivity({ kind: 'edge-snap', stateId: state?.id, durationMs: 900 });
+      } else {
+        edgeState = 'idle';
+        edgeSide = null;
+        stopEdgePolling();
+        petWindow.setBounds(snapBounds(bounds, workArea), true);
+      }
+    }
+  });
+  ipcMain.handle('window:set-mouse-over', (event, over: unknown) => {
+    assertSender(event, ['pet']);
+    if (typeof over !== 'boolean') throw new TypeError('Invalid mouse-over value');
+    if (mouseOverSprite !== over) {
+      mouseOverSprite = over;
+      updateMouseIgnore();
     }
   });
   ipcMain.handle('window:show-context-menu', (event) => {
@@ -667,6 +784,7 @@ app.on('window-all-closed', () => { /* tray app stays alive */ });
 app.on('before-quit', (event) => {
   isQuitting = true;
   typingListener.stop();
+  stopEdgePolling();
   for (const timer of reminderTimers.values()) clearTimeout(timer);
   reminderTimers.clear();
   if (quitPersisting || !stats) return;

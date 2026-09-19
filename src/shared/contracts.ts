@@ -193,6 +193,7 @@ export interface PetAPI {
     hideReminder: () => Promise<void>;
     hideDashboard: () => Promise<void>;
     hidePet: () => Promise<void>;
+    setMouseOver: (over: boolean) => Promise<void>;
   };
   runtime: {
     ready: (report: RuntimeReadyReport) => Promise<void>;

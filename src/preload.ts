@@ -37,6 +37,7 @@ const api: PetAPI = {
     hideReminder: () => ipcRenderer.invoke('window:hide-reminder') as Promise<void>,
     hideDashboard: () => ipcRenderer.invoke('window:hide-dashboard') as Promise<void>,
     hidePet: () => ipcRenderer.invoke('window:hide-pet') as Promise<void>,
+    setMouseOver: (over) => ipcRenderer.invoke('window:set-mouse-over', over) as Promise<void>,
   },
   runtime: {
     ready: (report: RuntimeReadyReport) => ipcRenderer.invoke('runtime:ready', report) as Promise<void>,

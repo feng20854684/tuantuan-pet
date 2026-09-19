@@ -176,6 +176,16 @@ container.addEventListener('contextmenu', (e) => {
   window.petAPI?.window.showContextMenu().catch(() => {});
 });
 
+// 动态鼠标穿透：鼠标在猫身上时响应事件，透明区域穿透到桌面
+let lastMouseOver: boolean | null = null;
+function updateMouseOver(over: boolean): void {
+  if (lastMouseOver === over) return;
+  lastMouseOver = over;
+  window.petAPI?.window.setMouseOver(over).catch(() => {});
+}
+sprite.addEventListener('mouseenter', () => updateMouseOver(true));
+sprite.addEventListener('mouseleave', () => updateMouseOver(false));
+
 // 监听状态活动
 window.petAPI?.events.onStateActivity((activity: StateActivity) => {
   if (activity.stateId) {
