@@ -5,7 +5,7 @@
   "criticalFileHashes": {
     "forge.config.js": "855b31f685975f1b5bca03c3f9eede85ad3e95e9fc0650a57a9d7ef080331c33",
     "webpack.renderer.config.js": "f0cbfe9f4f805126d0dd854b4024df83b2d08c2d67145ecae6bc29e5268ddda1",
-    "src/main.ts": "079a8d07311ab5732715b50bbd524857d23ca4f2566854b65b4dc37e8d3b57aa",
+    "src/main.ts": "59ceeff70ebc2a7a5039a27ce19175d151acf7f18b62fec0fa5ac0d56139028b",
     "src/preload.ts": "a8a2b7b5a9e57f66686b263e06565089100ee5d57377ce389297e0e70382c837",
     "src/main/data-validation.ts": "ee8c1018af3d75c68064603c4f4424e1034e01b456d6431c9fcc9dc93115cf74",
     "src/renderer/pet/state-machine.ts": "c361129351654bce7fb593152e0ff936df8aa5e9f1f2e06ce9fc7a1beffa49d3",
@@ -20,16 +20,16 @@
     "tools/dev-ports.mjs": "33c3f354450ee0b4454117a3eba544e0e89f351c2a3656aeffe4ab9c0a4f2275",
     "tools/doctor.mjs": "2f79b020df8f71522d735802c1095f104e6438fe7b2629ebb6fd99dcf2f0d565",
     "tools/inspect-assets.mjs": "2b70044609d3868913ec0db7ba69470078d843fcfa5e7b7a9cabfbbc9e67f5a5",
-    "package.json": "6662452c3b64c17cdb53f8df8c65fb6184c30a21f2c7ea9ae14818917020caac",
+    "package.json": "cd24eae379716098b09d98fd11057accd5d66944384e5b95c5bfe027aa47b9e4",
     "package-lock.json": "248f6cc933e4095209bb43116df39f09b91078ea62f8d7cedbc9641589eff140",
     "src/shared/contracts.ts": "dc4fe5f09cb304b2eb91cee7138d69dd61fceaaf69b74c71c6090dbb327a1969",
-    "src/renderer/pet/index.ts": "e2cca9f0b115572a283631f8bda5fb59c00bf76568ec5e51e62f8ea03c05a65b",
+    "src/renderer/pet/index.ts": "a9575bec94bc30342684c2281b7a691c714b4ee75c3a97c73a50fb70bc26906e",
     "tests/e2e/app.e2e.ts": "549b49b032dc04bec78267f5dd8e4d31fd73bd0b5d2ad424fa9bdb0f11789ff4",
     "tools/semantic-cutout.mjs": "4bec63f395adb94209e0d79f3f6f6fd7ad4050a77fffc3106ba56cbfb7177480",
     "tools/vision-cutout.swift": "47cd7606dde925be36d2f053265c95070a4d75d0b63b516825a15bf0045a6cdf",
-    "tools/validate-spec.mjs": "4d38bbf46c0f4ece77d26e1ca0834b6bc3406ab70babb3eae8477071ed8a1f4a",
+    "tools/validate-spec.mjs": "99c42210725162cb64e8099fd0ca4eda2242c3229b6d43c944e76559647796d8",
     "tools/validate-asset-links.mjs": "f4af80b3fb2ea9a5050b97cfbb71b83281d9685960c5d828bcda41f5128450c4",
     "tools/qa-ui.mjs": "2fc8417689023714595de148ba9fb8de73ea5b0648ef97c69efe55977995324f",
-    "tools/qa-experience.mjs": "580d5f83aa4dac97cc568b3b340407f7cef426875be03f3dde596c4021a11300"
+    "tools/qa-experience.mjs": "a581809a0f197e5d9f33bedddb0dc382c723c9894062b842912c548652180180"
   }
 }
