@@ -323,9 +323,8 @@ function cycleNext(): void {
   playStateOnPet(stateId);
   cycleIndex++;
 
-  const state = petSpec.states.find((s) => s.id === stateId);
-  const totalDur = state ? state.frames.length * state.frameDurationMs + 500 : 2000;
-  cycleTimer = setTimeout(cycleNext, totalDur);
+  // 每个状态固定播放 3 秒，方便肉眼验收
+  cycleTimer = setTimeout(cycleNext, 3000);
 }
 
 function startCycle(): void {
