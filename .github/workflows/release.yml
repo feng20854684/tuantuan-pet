@@ -53,8 +53,13 @@ jobs:
           PET_BUILD_AUTHORIZED: '1'
         run: ${{ matrix.build-cmd }}
 
-      - name: Package output into zip
-        shell: bash
+      - name: Package output into zip (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: Compress-Archive -Path ${{ matrix.output-dir }}\* -DestinationPath ${{ matrix.zip-name }} -Force
+
+      - name: Package output into zip (Unix)
+        if: matrix.os != 'windows-latest'
         run: |
           cd ${{ matrix.output-dir }}
           zip -r ../${{ matrix.zip-name }} .
