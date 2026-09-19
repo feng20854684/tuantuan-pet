@@ -33,7 +33,6 @@ for (const state of petSpec.states) {
 const stateMachine = new PetStateMachine(petSpec.states, performance.now());
 container.dataset.state = stateMachine.currentStateId();
 let idleTimer: ReturnType<typeof setTimeout> | null = null;
-let blinkTimer: ReturnType<typeof setTimeout> | null = null;
 let animationFrame: number | null = null;
 
 // 设置呼吸动画
@@ -100,28 +99,64 @@ function animate(timestamp: number): void {
   animationFrame = requestAnimationFrame(animate);
 }
 
-// 调度空闲事件（眨眼、随机动作）
+// ===== 随机空闲动作系统 =====
+type IdleAction = {
+  id: string;
+  type: 'frame' | 'css';
+  weight: number;
+  durationMs: number;
+  cssClass?: string;
+  stateId?: string;
+};
+
+const idleActions: IdleAction[] = [
+  { id: 'blink', type: 'frame', weight: 5, durationMs: 350, stateId: 'blink' },
+  { id: 'head-tilt-left', type: 'css', weight: 2, durationMs: 1200, cssClass: 'idle-head-tilt-left' },
+  { id: 'head-tilt-right', type: 'css', weight: 2, durationMs: 1200, cssClass: 'idle-head-tilt-right' },
+  { id: 'body-sway', type: 'css', weight: 2, durationMs: 1500, cssClass: 'idle-body-sway' },
+  { id: 'stretch', type: 'css', weight: 1, durationMs: 1800, cssClass: 'idle-stretch' },
+];
+
+const totalWeight = idleActions.reduce((sum, a) => sum + a.weight, 0);
+
+function pickRandomAction(): IdleAction {
+  let r = Math.random() * totalWeight;
+  for (const action of idleActions) {
+    r -= action.weight;
+    if (r <= 0) return action;
+  }
+  return idleActions[0]!;
+}
+
+const wrapper = document.getElementById('pet-wrapper') as HTMLDivElement;
+
+function playRandomIdleAction(): void {
+  if (stateMachine.currentStateId() !== 'idle') return;
+
+  const action = pickRandomAction();
+
+  if (action.type === 'frame' && action.stateId) {
+    setState(action.stateId);
+  } else if (action.type === 'css' && action.cssClass) {
+    wrapper.classList.remove('idle-head-tilt-left', 'idle-head-tilt-right', 'idle-body-sway', 'idle-stretch');
+    void wrapper.offsetWidth;
+    wrapper.classList.add(action.cssClass);
+    setTimeout(() => {
+      wrapper.classList.remove(action.cssClass!);
+    }, action.durationMs);
+  }
+}
+
+// 调度空闲事件
 function scheduleIdleEvents(): void {
-  if (blinkTimer) clearTimeout(blinkTimer);
   if (idleTimer) clearTimeout(idleTimer);
 
-  // 随机眨眼
-  const blinkDelay = 2000 + Math.random() * 4000;
-  blinkTimer = setTimeout(() => {
-    if (stateMachine.currentStateId() === 'idle') {
-      setState('blink');
-    }
-    scheduleIdleEvents();
-  }, blinkDelay);
-
-  // 随机空闲动作
-  const idleMin = petSpec.motion.idleIntervalMs.min;
-  const idleMax = petSpec.motion.idleIntervalMs.max;
-  const idleDelay = idleMin + Math.random() * (idleMax - idleMin);
+  // 每 10-20 秒随机播放一个空闲动作
+  const delay = 10000 + Math.random() * 10000;
   idleTimer = setTimeout(() => {
-    // 暂时不实现随机动作，保持 idle
+    playRandomIdleAction();
     scheduleIdleEvents();
-  }, idleDelay);
+  }, delay);
 }
 
 // 音效：Web Audio API 生成简单"啵"声
