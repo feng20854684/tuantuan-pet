@@ -3,7 +3,7 @@
   "app": {
     "name": "团团桌宠",
     "appId": "com.tuantuan.pet",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "language": "zh-CN"
   },
   "targets": {
@@ -578,6 +578,29 @@
         "y": 1.0
       },
       "mirrorSafe": false
+    },
+    {
+      "id": "walk-left",
+      "triggers": [],
+      "frames": [
+        "walk-left-1.png",
+        "walk-left-2.png",
+        "walk-left-3.png",
+        "walk-left-4.png",
+        "walk-left-5.png",
+        "walk-left-6.png"
+      ],
+      "frameDurationMs": 180,
+      "loop": true,
+      "priority": 30,
+      "interrupt": "restart",
+      "cooldownMs": 0,
+      "direction": "left",
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "mirrorSafe": true
     }
   ],
   "storage": {

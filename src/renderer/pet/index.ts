@@ -152,15 +152,58 @@ function playRandomIdleAction(): void {
 }
 
 // 调度空闲事件
+let sleepTimer: ReturnType<typeof setTimeout> | undefined;
+let walkTimer: ReturnType<typeof setTimeout> | undefined;
+let isSleeping = false;
+
 function scheduleIdleEvents(): void {
   if (idleTimer) clearTimeout(idleTimer);
 
   // 每 20-30 秒随机播放一个空闲动作
   const delay = 20000 + Math.random() * 10000;
   idleTimer = setTimeout(() => {
-    playRandomIdleAction();
+    if (!isSleeping) {
+      playRandomIdleAction();
+    }
     scheduleIdleEvents();
   }, delay);
+}
+
+// 睡眠模式：3 分钟无互动后进入睡眠
+function scheduleSleep(): void {
+  if (sleepTimer) clearTimeout(sleepTimer);
+  sleepTimer = setTimeout(() => {
+    if (stateMachine.currentStateId() === 'idle' && !isSleeping) {
+      isSleeping = true;
+      setState('sleep');
+    }
+  }, 180000); // 3 分钟
+}
+
+function wakeUp(): void {
+  if (isSleeping) {
+    isSleeping = false;
+    setState('idle');
+  }
+  scheduleSleep();
+}
+
+// 随机走路：每 1-2 分钟随机走一次
+function scheduleWalk(): void {
+  if (walkTimer) clearTimeout(walkTimer);
+  walkTimer = setTimeout(() => {
+    if (stateMachine.currentStateId() === 'idle' && !isSleeping) {
+      // 随机走路：先播放 walk-left，然后移动窗口位置
+      setState('walk-left');
+      // 走 3 秒后回到 idle
+      setTimeout(() => {
+        if (stateMachine.currentStateId() === 'walk-left') {
+          setState('idle');
+        }
+      }, 3000);
+    }
+    scheduleWalk();
+  }, 60000 + Math.random() * 60000); // 1-2 分钟
 }
 
 // 音效：Web Audio API 生成简单"啵"声
@@ -190,6 +233,7 @@ container.addEventListener('click', () => {
     suppressNextClick = false;
     return;
   }
+  wakeUp();
   playPopSound();
   playSquash();
   setState('tap-happy');
@@ -323,6 +367,8 @@ async function init(): Promise<void> {
     // 素材确认可用后再启动 idle 和动画循环。
     setState('idle');
     scheduleIdleEvents();
+    scheduleSleep();
+    scheduleWalk();
     animationFrame = requestAnimationFrame(animate);
 
     // 报告就绪

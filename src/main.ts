@@ -500,6 +500,12 @@ function buildTrayMenu(): Electron.MenuItemConstructorOptions[] {
     { label: '🚀 开机自启', type: 'checkbox', checked: settings.autoStart, click: () => void saveSettings({ ...settings, autoStart: !settings.autoStart }) },
     { label: '🔊 音效', type: 'checkbox', checked: settings.soundEnabled, click: () => void saveSettings({ ...settings, soundEnabled: !settings.soundEnabled }) },
     { label: '🖱️ 鼠标穿透', type: 'checkbox', checked: settings.clickThrough, click: () => void saveSettings({ ...settings, clickThrough: !settings.clickThrough }) },
+    { label: '📐 透明度', submenu: [
+      { label: '100%', type: 'radio', checked: settings.opacity === 1, click: () => void saveSettings({ ...settings, opacity: 1 }) },
+      { label: '80%', type: 'radio', checked: settings.opacity === 0.8, click: () => void saveSettings({ ...settings, opacity: 0.8 }) },
+      { label: '60%', type: 'radio', checked: settings.opacity === 0.6, click: () => void saveSettings({ ...settings, opacity: 0.6 }) },
+      { label: '40%', type: 'radio', checked: settings.opacity === 0.4, click: () => void saveSettings({ ...settings, opacity: 0.4 }) },
+    ]},
     { label: '❓ 退出确认', type: 'checkbox', checked: settings.confirmExit, click: () => void saveSettings({ ...settings, confirmExit: !settings.confirmExit }) },
     { type: 'separator' },
     { label: '🚪 退出', click: () => { void confirmQuit(); } },
