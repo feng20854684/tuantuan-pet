@@ -115,6 +115,10 @@ export interface Settings {
   typingReaction: boolean;
   clickThrough: boolean;
   petScale: number;
+  autoStart: boolean;
+  opacity: number;
+  soundEnabled: boolean;
+  confirmExit: boolean;
 }
 
 export interface Reminder {
@@ -247,13 +251,16 @@ export function assertSettingsPatch(value: unknown): asserts value is Partial<Se
     throw new TypeError('Invalid settings patch');
   }
   const obj = value as Record<string, unknown>;
-  const booleanKeys = new Set(['edgeSnap', 'alwaysOnTop', 'typingReaction', 'clickThrough']);
-  const allowedKeys = new Set([...booleanKeys, 'petScale']);
+  const booleanKeys = new Set(['edgeSnap', 'alwaysOnTop', 'typingReaction', 'clickThrough', 'autoStart', 'soundEnabled', 'confirmExit']);
+  const allowedKeys = new Set([...booleanKeys, 'petScale', 'opacity']);
   for (const [key, item] of Object.entries(obj)) {
     if (!allowedKeys.has(key)) throw new TypeError(`Unknown settings field: ${key}`);
     if (booleanKeys.has(key) && typeof item !== 'boolean') throw new TypeError(`Invalid settings field: ${key}`);
     if (key === 'petScale' && (typeof item !== 'number' || !Number.isFinite(item) || ![0.65, 0.8, 1, 1.2].includes(item))) {
       throw new TypeError('Invalid settings field: petScale');
+    }
+    if (key === 'opacity' && (typeof item !== 'number' || !Number.isFinite(item) || item < 0.3 || item > 1)) {
+      throw new TypeError('Invalid settings field: opacity');
     }
   }
 }

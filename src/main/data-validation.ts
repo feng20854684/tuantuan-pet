@@ -25,13 +25,16 @@ export function localDateKey(date = new Date()): string {
 
 export function parseSettings(value: unknown): Settings {
   const obj = record(value, 'settings');
-  const expected = new Set(['edgeSnap', 'alwaysOnTop', 'typingReaction', 'clickThrough', 'petScale']);
+  const expected = new Set(['edgeSnap', 'alwaysOnTop', 'typingReaction', 'clickThrough', 'petScale', 'autoStart', 'opacity', 'soundEnabled', 'confirmExit']);
   for (const key of Object.keys(obj)) if (!expected.has(key)) throw new TypeError(`Unknown settings field: ${key}`);
-  for (const key of ['edgeSnap', 'alwaysOnTop', 'typingReaction', 'clickThrough'] as const) {
+  for (const key of ['edgeSnap', 'alwaysOnTop', 'typingReaction', 'clickThrough', 'autoStart', 'soundEnabled', 'confirmExit'] as const) {
     if (typeof obj[key] !== 'boolean') throw new TypeError(`Invalid settings field: ${key}`);
   }
   if (typeof obj.petScale !== 'number' || !Number.isFinite(obj.petScale) || !PET_SCALES.includes(obj.petScale as typeof PET_SCALES[number])) {
     throw new TypeError('Invalid settings field: petScale');
+  }
+  if (typeof obj.opacity !== 'number' || !Number.isFinite(obj.opacity) || obj.opacity < 0.3 || obj.opacity > 1) {
+    throw new TypeError('Invalid settings field: opacity');
   }
   return {
     edgeSnap: obj.edgeSnap as boolean,
@@ -39,6 +42,10 @@ export function parseSettings(value: unknown): Settings {
     typingReaction: obj.typingReaction as boolean,
     clickThrough: obj.clickThrough as boolean,
     petScale: obj.petScale,
+    autoStart: obj.autoStart as boolean,
+    opacity: obj.opacity,
+    soundEnabled: obj.soundEnabled as boolean,
+    confirmExit: obj.confirmExit as boolean,
   };
 }
 

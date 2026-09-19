@@ -13,6 +13,10 @@ const defaults: Settings = {
   typingReaction: false,
   clickThrough: false,
   petScale: 1,
+  autoStart: false,
+  opacity: 1,
+  soundEnabled: true,
+  confirmExit: true,
 };
 
 test('atomic JSON persistence round-trips without temporary files', async () => {

@@ -54,6 +54,10 @@ const defaultSettings: Settings = {
   typingReaction: spec.features.typingReaction,
   clickThrough: false,
   petScale: spec.experience.petSizing.defaultScale,
+  autoStart: false,
+  opacity: 1,
+  soundEnabled: true,
+  confirmExit: true,
 };
 
 const defaultStats: PersistedStats = {
@@ -225,7 +229,9 @@ function applyPetSettings(): void {
   const size = petSize();
   petWindow.setSize(size, size, true);
   petWindow.setAlwaysOnTop(settings.alwaysOnTop);
+  petWindow.setOpacity(settings.opacity);
   updateMouseIgnore();
+  app.setLoginItemSettings({ openAtLogin: settings.autoStart });
 }
 
 function updateMouseIgnore(): void {
@@ -485,6 +491,43 @@ function buildPetMenu(): Electron.MenuItemConstructorOptions[] {
   return items;
 }
 
+function buildTrayMenu(): Electron.MenuItemConstructorOptions[] {
+  const items: Electron.MenuItemConstructorOptions[] = [
+    { label: `🐾 显示${spec.character.displayName}`, click: () => petWindow?.show() },
+    { label: `🏠 ${spec.character.displayName}的小屋`, click: showDashboard },
+    { label: '⏰ 设置提醒', click: showReminderComposer },
+    { type: 'separator' },
+    { label: '🚀 开机自启', type: 'checkbox', checked: settings.autoStart, click: () => void saveSettings({ ...settings, autoStart: !settings.autoStart }) },
+    { label: '🔊 音效', type: 'checkbox', checked: settings.soundEnabled, click: () => void saveSettings({ ...settings, soundEnabled: !settings.soundEnabled }) },
+    { label: '🖱️ 鼠标穿透', type: 'checkbox', checked: settings.clickThrough, click: () => void saveSettings({ ...settings, clickThrough: !settings.clickThrough }) },
+    { label: '❓ 退出确认', type: 'checkbox', checked: settings.confirmExit, click: () => void saveSettings({ ...settings, confirmExit: !settings.confirmExit }) },
+    { type: 'separator' },
+    { label: '🚪 退出', click: () => { void confirmQuit(); } },
+  ];
+  return items;
+}
+
+async function confirmQuit(): Promise<void> {
+  if (!settings.confirmExit) {
+    isQuitting = true;
+    app.quit();
+    return;
+  }
+  const choice = await dialog.showMessageBox({
+    type: 'question',
+    buttons: ['退出', '取消'],
+    defaultId: 0,
+    cancelId: 1,
+    title: '退出团团',
+    message: `确定要退出${spec.character.displayName}吗？`,
+    detail: '退出后团团将不再陪伴你。',
+  });
+  if (choice.response === 0) {
+    isQuitting = true;
+    app.quit();
+  }
+}
+
 function createTray(): void {
   if (!spec.features.tray) return;
   const resolvedTrayIconPath = path.resolve(__dirname, trayIconPath);
@@ -492,14 +535,7 @@ function createTray(): void {
   if (trayImage.isEmpty()) throw new Error(`Tray icon is empty: ${resolvedTrayIconPath}`);
   tray = new Tray(trayImage.resize({ width: 32, height: 32, quality: 'best' }));
   tray.setToolTip(spec.app.name);
-  tray.setContextMenu(Menu.buildFromTemplate([
-    { label: `🐾 显示${spec.character.displayName}`, click: () => petWindow?.show() },
-    { label: `🏠 ${spec.character.displayName}的小屋`, click: showDashboard },
-    { label: '⏰ 设置提醒', click: showReminderComposer },
-    { label: settings.clickThrough ? '🖱️ 关闭鼠标穿透' : '🖱️ 开启鼠标穿透', click: () => void saveSettings({ ...settings, clickThrough: !settings.clickThrough }) },
-    { type: 'separator' },
-    { label: '🚪 退出', click: () => { isQuitting = true; app.quit(); } },
-  ]));
+  tray.setContextMenu(Menu.buildFromTemplate(buildTrayMenu()));
   tray.on('click', () => petWindow?.isVisible() ? petWindow.hide() : petWindow?.show());
 }
 
@@ -514,14 +550,7 @@ async function saveSettings(next: Settings): Promise<Settings> {
 
 function createTrayMenuRefresh(): void {
   if (!tray) return;
-  tray.setContextMenu(Menu.buildFromTemplate([
-    { label: `🐾 显示${spec.character.displayName}`, click: () => petWindow?.show() },
-    { label: `🏠 ${spec.character.displayName}的小屋`, click: showDashboard },
-    { label: '⏰ 设置提醒', click: showReminderComposer },
-    { label: settings.clickThrough ? '🖱️ 关闭鼠标穿透' : '🖱️ 开启鼠标穿透', click: () => void saveSettings({ ...settings, clickThrough: !settings.clickThrough }) },
-    { type: 'separator' },
-    { label: '🚪 退出', click: () => { isQuitting = true; app.quit(); } },
-  ]));
+  tray.setContextMenu(Menu.buildFromTemplate(buildTrayMenu()));
 }
 
 function broadcastTypingStatus(): void {

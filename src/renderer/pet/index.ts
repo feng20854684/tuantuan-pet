@@ -124,12 +124,34 @@ function scheduleIdleEvents(): void {
   }, idleDelay);
 }
 
+// 音效：Web Audio API 生成简单"啵"声
+let audioCtx: AudioContext | null = null;
+let soundEnabled = true;
+
+function playPopSound(): void {
+  if (!soundEnabled) return;
+  try {
+    if (!audioCtx) audioCtx = new AudioContext();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(900, audioCtx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+    osc.start(audioCtx.currentTime);
+    osc.stop(audioCtx.currentTime + 0.12);
+  } catch { /* audio not available */ }
+}
+
 // 点击事件
 container.addEventListener('click', () => {
   if (suppressNextClick) {
     suppressNextClick = false;
     return;
   }
+  playPopSound();
   playSquash();
   setState('tap-happy');
   scheduleIdleEvents();
@@ -217,6 +239,9 @@ window.petAPI?.events.onStateActivity((activity: StateActivity) => {
 // 初始化
 async function init(): Promise<void> {
   try {
+    // 加载音效开关
+    const settings = await window.petAPI?.settings.get();
+    if (settings) soundEnabled = settings.soundEnabled;
     // 所有运行素材必须真实解码成功后才能报告 ready。
     const loadedAssets = await Promise.all(expectedAssetNames.map((name) => new Promise<HTMLImageElement>((resolve, reject) => {
       const url = assetMap.get(name);

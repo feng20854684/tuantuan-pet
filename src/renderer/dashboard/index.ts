@@ -34,6 +34,10 @@ const companionMinutesEl = document.getElementById('companion-minutes') as HTMLD
 const interactionsList = document.getElementById('interactions-list') as HTMLDivElement;
 const toggleAlwaysOnTop = document.getElementById('toggle-always-on-top') as HTMLDivElement;
 const toggleClickThrough = document.getElementById('toggle-click-through') as HTMLDivElement;
+const toggleAutoStart = document.getElementById('toggle-auto-start') as HTMLDivElement;
+const toggleSound = document.getElementById('toggle-sound') as HTMLDivElement;
+const toggleConfirmExit = document.getElementById('toggle-confirm-exit') as HTMLDivElement;
+const opacitySlider = document.getElementById('opacity-slider') as HTMLInputElement;
 const sizeSelector = document.getElementById('size-selector') as HTMLDivElement;
 
 let currentSettings: Settings | null = null;
@@ -86,6 +90,11 @@ async function loadSettings(): Promise<void> {
     } else {
       toggleClickThrough.classList.remove('active');
     }
+
+    toggleAutoStart.classList.toggle('active', !!settings.autoStart);
+    toggleSound.classList.toggle('active', settings.soundEnabled);
+    toggleConfirmExit.classList.toggle('active', settings.confirmExit);
+    opacitySlider.value = String(Math.round(settings.opacity * 100));
 
     // 更新大小选择
     const sizeBtns = sizeSelector.querySelectorAll('.size-btn');
@@ -151,13 +160,60 @@ toggleClickThrough.addEventListener('click', async () => {
   try {
     await window.petAPI?.settings.update({ clickThrough: newVal });
     currentSettings.clickThrough = newVal;
-    if (newVal) {
-      toggleClickThrough.classList.add('active');
-    } else {
-      toggleClickThrough.classList.remove('active');
-    }
+    toggleClickThrough.classList.toggle('active', newVal);
   } catch (error) {
     console.error('Failed to update setting:', error);
+  }
+});
+
+// 开机自启开关
+toggleAutoStart.addEventListener('click', async () => {
+  if (!currentSettings) return;
+  const newVal = !currentSettings.autoStart;
+  try {
+    await window.petAPI?.settings.update({ autoStart: newVal });
+    currentSettings.autoStart = newVal;
+    toggleAutoStart.classList.toggle('active', newVal);
+  } catch (error) {
+    console.error('Failed to update setting:', error);
+  }
+});
+
+// 音效开关
+toggleSound.addEventListener('click', async () => {
+  if (!currentSettings) return;
+  const newVal = !currentSettings.soundEnabled;
+  try {
+    await window.petAPI?.settings.update({ soundEnabled: newVal });
+    currentSettings.soundEnabled = newVal;
+    toggleSound.classList.toggle('active', newVal);
+  } catch (error) {
+    console.error('Failed to update setting:', error);
+  }
+});
+
+// 退出确认开关
+toggleConfirmExit.addEventListener('click', async () => {
+  if (!currentSettings) return;
+  const newVal = !currentSettings.confirmExit;
+  try {
+    await window.petAPI?.settings.update({ confirmExit: newVal });
+    currentSettings.confirmExit = newVal;
+    toggleConfirmExit.classList.toggle('active', newVal);
+  } catch (error) {
+    console.error('Failed to update setting:', error);
+  }
+});
+
+// 透明度滑块
+opacitySlider.addEventListener('change', async () => {
+  if (!currentSettings) return;
+  const val = Number(opacitySlider.value) / 100;
+  try {
+    await window.petAPI?.settings.update({ opacity: val });
+    currentSettings.opacity = val;
+  } catch (error) {
+    console.error('Failed to update opacity:', error);
   }
 });
 
