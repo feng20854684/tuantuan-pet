@@ -110,7 +110,12 @@ type IdleAction = {
 };
 
 const idleActions: IdleAction[] = [
-  { id: 'blink', type: 'frame', weight: 6, durationMs: 350, stateId: 'blink' },
+  { id: 'blink', type: 'frame', weight: 8, durationMs: 350, stateId: 'blink' },
+  { id: 'yawn', type: 'frame', weight: 3, durationMs: 1000, stateId: 'yawn' },
+  { id: 'lick-paw', type: 'frame', weight: 3, durationMs: 1000, stateId: 'lick-paw' },
+  { id: 'tail-chase', type: 'frame', weight: 2, durationMs: 1100, stateId: 'tail-chase' },
+  { id: 'knead', type: 'frame', weight: 2, durationMs: 1100, stateId: 'knead' },
+  { id: 'scratch', type: 'frame', weight: 2, durationMs: 900, stateId: 'scratch' },
   { id: 'head-tilt-left', type: 'css', weight: 3, durationMs: 1500, cssClass: 'idle-head-tilt-left' },
   { id: 'head-tilt-right', type: 'css', weight: 3, durationMs: 1500, cssClass: 'idle-head-tilt-right' },
   { id: 'stretch', type: 'css', weight: 2, durationMs: 2000, cssClass: 'idle-stretch' },

@@ -101,6 +101,45 @@
           "扑！",
           "再来一局！"
         ]
+      },
+      {
+        "id": "pet-belly",
+        "emoji": "🤚",
+        "label": "摸肚子",
+        "stateId": "pet-belly",
+        "durationMs": 2000,
+        "affectionGain": 6,
+        "feedback": [
+          "呼噜呼噜...好舒服",
+          "别停...继续摸",
+          "团团的肚子随便摸！"
+        ]
+      },
+      {
+        "id": "dance",
+        "emoji": "💃",
+        "label": "跳舞",
+        "stateId": "dance",
+        "durationMs": 2500,
+        "affectionGain": 3,
+        "feedback": [
+          "音乐！舞蹈！",
+          "看我扭屁股！",
+          "一起跳！"
+        ]
+      },
+      {
+        "id": "climb",
+        "emoji": "🧗",
+        "label": "爬墙",
+        "stateId": "climb",
+        "durationMs": 2500,
+        "affectionGain": 3,
+        "feedback": [
+          "看我爬得高不高！",
+          "咻~爬上去！",
+          "看我跳下来！"
+        ]
       }
     ]
   },
@@ -329,6 +368,216 @@
         "y": 1.0
       },
       "mirrorSafe": true
+    },
+    {
+      "id": "sleep",
+      "triggers": [],
+      "frames": [
+        "sleep-1.png",
+        "sleep-2.png",
+        "sleep-3.png",
+        "sleep-4.png",
+        "sleep-5.png",
+        "sleep-6.png"
+      ],
+      "frameDurationMs": 500,
+      "loop": true,
+      "priority": 5,
+      "interrupt": "restart",
+      "cooldownMs": 30000,
+      "direction": "neutral",
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "mirrorSafe": false
+    },
+    {
+      "id": "yawn",
+      "triggers": [],
+      "frames": [
+        "yawn-1.png",
+        "yawn-2.png",
+        "yawn-3.png",
+        "yawn-4.png",
+        "yawn-5.png"
+      ],
+      "frameDurationMs": 200,
+      "loop": false,
+      "priority": 10,
+      "interrupt": "restart",
+      "cooldownMs": 15000,
+      "direction": "neutral",
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "mirrorSafe": false
+    },
+    {
+      "id": "lick-paw",
+      "triggers": [],
+      "frames": [
+        "lick-paw-1.png",
+        "lick-paw-2.png",
+        "lick-paw-3.png",
+        "lick-paw-4.png",
+        "lick-paw-5.png"
+      ],
+      "frameDurationMs": 200,
+      "loop": false,
+      "priority": 10,
+      "interrupt": "restart",
+      "cooldownMs": 20000,
+      "direction": "neutral",
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "mirrorSafe": false
+    },
+    {
+      "id": "tail-chase",
+      "triggers": [],
+      "frames": [
+        "tail-chase-1.png",
+        "tail-chase-2.png",
+        "tail-chase-3.png",
+        "tail-chase-4.png",
+        "tail-chase-5.png",
+        "tail-chase-6.png"
+      ],
+      "frameDurationMs": 180,
+      "loop": false,
+      "priority": 10,
+      "interrupt": "restart",
+      "cooldownMs": 30000,
+      "direction": "neutral",
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "mirrorSafe": false
+    },
+    {
+      "id": "pet-belly",
+      "triggers": [
+        "interaction:pet-belly"
+      ],
+      "frames": [
+        "pet-belly-1.png",
+        "pet-belly-2.png",
+        "pet-belly-3.png",
+        "pet-belly-4.png",
+        "pet-belly-5.png",
+        "pet-belly-6.png"
+      ],
+      "frameDurationMs": 200,
+      "loop": false,
+      "priority": 100,
+      "interrupt": "restart",
+      "cooldownMs": 5000,
+      "direction": "neutral",
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "mirrorSafe": false
+    },
+    {
+      "id": "knead",
+      "triggers": [],
+      "frames": [
+        "knead-1.png",
+        "knead-2.png",
+        "knead-3.png",
+        "knead-4.png",
+        "knead-5.png",
+        "knead-6.png"
+      ],
+      "frameDurationMs": 180,
+      "loop": false,
+      "priority": 10,
+      "interrupt": "restart",
+      "cooldownMs": 25000,
+      "direction": "neutral",
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "mirrorSafe": false
+    },
+    {
+      "id": "climb",
+      "triggers": [
+        "interaction:climb"
+      ],
+      "frames": [
+        "climb-1.png",
+        "climb-2.png",
+        "climb-3.png",
+        "climb-4.png",
+        "climb-5.png",
+        "climb-6.png"
+      ],
+      "frameDurationMs": 200,
+      "loop": false,
+      "priority": 90,
+      "interrupt": "restart",
+      "cooldownMs": 10000,
+      "direction": "neutral",
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "mirrorSafe": false
+    },
+    {
+      "id": "dance",
+      "triggers": [
+        "interaction:dance"
+      ],
+      "frames": [
+        "dance-1.png",
+        "dance-2.png",
+        "dance-3.png",
+        "dance-4.png",
+        "dance-5.png",
+        "dance-6.png"
+      ],
+      "frameDurationMs": 180,
+      "loop": false,
+      "priority": 90,
+      "interrupt": "restart",
+      "cooldownMs": 10000,
+      "direction": "neutral",
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "mirrorSafe": false
+    },
+    {
+      "id": "scratch",
+      "triggers": [],
+      "frames": [
+        "scratch-1.png",
+        "scratch-2.png",
+        "scratch-3.png",
+        "scratch-4.png",
+        "scratch-5.png"
+      ],
+      "frameDurationMs": 180,
+      "loop": false,
+      "priority": 10,
+      "interrupt": "restart",
+      "cooldownMs": 20000,
+      "direction": "neutral",
+      "anchor": {
+        "x": 0.5,
+        "y": 1.0
+      },
+      "mirrorSafe": false
     }
   ],
   "storage": {

@@ -14,7 +14,9 @@ const stateById = new Map(spec.states.map((state) => [state.id, state]));
 
 for (const state of spec.states) {
   for (const frame of state.frames) usedFiles.add(frame.replaceAll('\\', '/'));
-  if (!state.triggers.length) issues.push({ gate: 'reachability', state: state.id, message: 'state has no runtime trigger' });
+  // 程序化触发的状态（如 idle 动作池中的状态）可以没有 trigger
+  const isProgrammaticState = ['sleep', 'yawn', 'lick-paw', 'tail-chase', 'knead', 'scratch', 'walk-left', 'walk-right'].includes(state.id);
+  if (!state.triggers.length && !isProgrammaticState) issues.push({ gate: 'reachability', state: state.id, message: 'state has no runtime trigger' });
   for (const trigger of state.triggers) {
     if (triggerOwners.has(trigger)) issues.push({ gate: 'reachability', state: state.id, message: `trigger ${trigger} is already owned by ${triggerOwners.get(trigger)}` });
     triggerOwners.set(trigger, state.id);

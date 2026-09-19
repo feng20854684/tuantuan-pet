@@ -45,7 +45,10 @@ for (const state of spec.states ?? []) {
     if (frameOwners.has(frame)) errors.push(`frame ${frame} belongs to both ${frameOwners.get(frame)} and ${state.id}`);
     else frameOwners.set(frame, state.id);
   }
-  if (!Array.isArray(state.triggers) || !state.triggers.length) errors.push(`state has no runtime trigger: ${state.id}`);
+  // 程序化触发的状态（如 idle 动作池中的状态）可以没有 trigger
+  const isProgrammaticState = ['sleep', 'yawn', 'lick-paw', 'tail-chase', 'knead', 'scratch', 'walk-left', 'walk-right'].includes(state.id);
+  if (!Array.isArray(state.triggers)) errors.push(`state has no triggers array: ${state.id}`);
+  if (Array.isArray(state.triggers) && state.triggers.length === 0 && !isProgrammaticState) errors.push(`state has no runtime trigger: ${state.id}`);
   for (const trigger of state.triggers ?? []) {
     if (!knownTriggers.has(trigger) && !(trigger.startsWith('interaction:') && interactions.has(trigger.slice(12)))) errors.push(`unknown trigger ${trigger} on ${state.id}`);
     if (triggers.has(trigger)) errors.push(`trigger ${trigger} maps to both ${triggers.get(trigger)} and ${state.id}`);
