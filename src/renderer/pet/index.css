@@ -21,6 +21,7 @@ html, body {
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
+  transform-origin: bottom center;
 }
 
 #pet-sprite {

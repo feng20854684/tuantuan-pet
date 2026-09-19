@@ -265,7 +265,7 @@ let isMirrored = false;
 function setMirror(mirrored: boolean): void {
   if (isMirrored === mirrored) return;
   isMirrored = mirrored;
-  wrapper.style.transform = mirrored ? 'scaleX(-1)' : '';
+  container.style.transform = mirrored ? 'scaleX(-1)' : '';
 }
 
 window.petAPI?.events.onStateActivity((activity: StateActivity) => {
