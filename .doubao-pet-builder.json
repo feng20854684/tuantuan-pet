@@ -8,7 +8,7 @@
     "src/main.ts": "59ceeff70ebc2a7a5039a27ce19175d151acf7f18b62fec0fa5ac0d56139028b",
     "src/preload.ts": "a8a2b7b5a9e57f66686b263e06565089100ee5d57377ce389297e0e70382c837",
     "src/main/data-validation.ts": "ee8c1018af3d75c68064603c4f4424e1034e01b456d6431c9fcc9dc93115cf74",
-    "src/renderer/pet/state-machine.ts": "c361129351654bce7fb593152e0ff936df8aa5e9f1f2e06ce9fc7a1beffa49d3",
+    "src/renderer/pet/state-machine.ts": "4b13da2db324ea24662f85943bb823d5471ec1088564583eef4d33a2058f9796",
     "tools/collect-release.mjs": "50d78bbd41b5a8d2435fc3bdf77359ee10a908379b5918ccb4b83dc27d0c78d7",
     "tools/process-assets.mjs": "b250726741cc1cd68127ad989b5c925be8a7338c62a98efaf20464a2166671e4",
     "tools/qa-assets.mjs": "d8aeaa1810da1499db89e39c00a29336587d27c2ad828d97f7bf34f4c14be980",
@@ -23,13 +23,14 @@
     "package.json": "b9216b2bc435e72fb21f528c3d9c6396a6a2adf79acd57f1a6170c630ca77f59",
     "package-lock.json": "fe3511c99a4c35d5162785419a4d52a2faf80910ffd2bebf9e4e7fa5575d9996",
     "src/shared/contracts.ts": "dc4fe5f09cb304b2eb91cee7138d69dd61fceaaf69b74c71c6090dbb327a1969",
-    "src/renderer/pet/index.ts": "a9575bec94bc30342684c2281b7a691c714b4ee75c3a97c73a50fb70bc26906e",
+    "src/renderer/pet/index.ts": "313b16e2314d44f16a1b9029e0c3764ee1ec560fa6870bafcc9c8b0fd3570ef8",
     "tests/e2e/app.e2e.ts": "549b49b032dc04bec78267f5dd8e4d31fd73bd0b5d2ad424fa9bdb0f11789ff4",
     "tools/semantic-cutout.mjs": "4bec63f395adb94209e0d79f3f6f6fd7ad4050a77fffc3106ba56cbfb7177480",
     "tools/vision-cutout.swift": "47cd7606dde925be36d2f053265c95070a4d75d0b63b516825a15bf0045a6cdf",
     "tools/validate-spec.mjs": "99c42210725162cb64e8099fd0ca4eda2242c3229b6d43c944e76559647796d8",
     "tools/validate-asset-links.mjs": "f4af80b3fb2ea9a5050b97cfbb71b83281d9685960c5d828bcda41f5128450c4",
     "tools/qa-ui.mjs": "2fc8417689023714595de148ba9fb8de73ea5b0648ef97c69efe55977995324f",
-    "tools/qa-experience.mjs": "a581809a0f197e5d9f33bedddb0dc382c723c9894062b842912c548652180180"
+    "tools/qa-experience.mjs": "a581809a0f197e5d9f33bedddb0dc382c723c9894062b842912c548652180180",
+    "src/renderer/pet/index.css": "ffdacb00e733b4c9202d65abc0139a61a524cdc58c13fa91b59dad0f150d98d2"
   }
 }

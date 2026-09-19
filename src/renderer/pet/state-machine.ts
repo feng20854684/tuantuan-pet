@@ -7,11 +7,15 @@ export interface StateFrame {
   stateChanged: boolean;
 }
 
+type PlayPhase = 'playing' | 'hold-end';
+
 interface ActiveState {
   state: PetState;
   frameIndex: number;
   startedAt: number;
-  durationMs: number;
+  phase: PlayPhase;
+  frameDurationMs: number;
+  holdEndMs: number;
 }
 
 export class PetStateMachine {
@@ -28,18 +32,35 @@ export class PetStateMachine {
     this.active = this.makeActive(idle, now);
   }
 
-  private durationFor(state: PetState, requested?: number): number {
-    if (requested !== undefined && Number.isFinite(requested) && requested > 0) return requested;
-    if (state.id === this.idleState.id && state.loop) return 0;
-    return Math.max(1, state.frames.length * state.frameDurationMs);
+  private getHoldEndMs(state: PetState): number {
+    // 互动状态默认定格时间，空闲动作短一点
+    const defaults: Record<string, number> = {
+      'tap-happy': 800,
+      'pet-head': 1000,
+      'feed-fish': 1200,
+      'play-wand': 1200,
+      'notify': 800,
+      'edge-peek': 900,
+      'yawn': 600,
+      'lick-paw': 600,
+      'tail-chase': 800,
+      'pet-belly': 1200,
+      'knead': 1000,
+      'climb': 800,
+      'dance': 1200,
+      'scratch': 600,
+    };
+    return defaults[state.id] ?? 0;
   }
 
-  private makeActive(state: PetState, now: number, durationMs?: number): ActiveState {
+  private makeActive(state: PetState, now: number): ActiveState {
     return {
       state,
       frameIndex: 0,
       startedAt: now,
-      durationMs: this.durationFor(state, durationMs),
+      phase: 'playing',
+      frameDurationMs: state.frameDurationMs,
+      holdEndMs: this.getHoldEndMs(state),
     };
   }
 
@@ -50,33 +71,55 @@ export class PetStateMachine {
     if (this.active.state.id === next.id && next.interrupt === 'resume') return false;
     const lastCompleted = this.completedAt.get(next.id);
     if (lastCompleted !== undefined && now - lastCompleted < next.cooldownMs) return false;
-    this.active = this.makeActive(next, now, durationMs);
+    this.active = this.makeActive(next, now);
     return true;
   }
 
   tick(now: number): StateFrame {
     let stateChanged = false;
     let elapsed = Math.max(0, now - this.active.startedAt);
-    if (this.active.durationMs > 0 && elapsed >= this.active.durationMs) {
-      this.completedAt.set(this.active.state.id, now);
+    const { state } = this.active;
+    const frameCount = Math.max(1, state.frames.length);
+    const frameTotalMs = frameCount * this.active.frameDurationMs;
+
+    // 检查是否需要切回 idle
+    const totalDurationMs = state.loop ? 0 : frameTotalMs + this.active.holdEndMs;
+    if (totalDurationMs > 0 && elapsed >= totalDurationMs) {
+      this.completedAt.set(state.id, now);
       this.active = this.makeActive(this.idleState, now);
       elapsed = 0;
       stateChanged = true;
     }
 
-    const { state } = this.active;
-    const frameCount = Math.max(1, state.frames.length);
-    const rawIndex = Math.floor(elapsed / Math.max(1, state.frameDurationMs));
-    const frameIndex = state.loop
-      ? rawIndex % frameCount
-      : Math.min(frameCount - 1, rawIndex);
+    const currentState = this.active.state;
+    const currentFrameCount = Math.max(1, currentState.frames.length);
+    const currentFrameTotalMs = currentFrameCount * this.active.frameDurationMs;
+
+    let frameIndex: number;
+    if (this.active.phase === 'hold-end') {
+      // 定格阶段：保持最后一帧
+      frameIndex = currentFrameCount - 1;
+    } else {
+      // 播放阶段
+      const rawIndex = Math.floor(elapsed / Math.max(1, this.active.frameDurationMs));
+      frameIndex = currentState.loop
+        ? rawIndex % currentFrameCount
+        : Math.min(currentFrameCount - 1, rawIndex);
+
+      // 检查是否进入定格阶段
+      if (!currentState.loop && this.active.holdEndMs > 0 && elapsed >= currentFrameTotalMs) {
+        this.active.phase = 'hold-end';
+        frameIndex = currentFrameCount - 1;
+      }
+    }
+
     const frameChanged = frameIndex !== this.active.frameIndex;
     this.active.frameIndex = frameIndex;
 
     return {
-      stateId: state.id,
+      stateId: currentState.id,
       frameIndex,
-      frame: state.frames[frameIndex] ?? state.frames[0] ?? '',
+      frame: currentState.frames[frameIndex] ?? currentState.frames[0] ?? '',
       stateChanged: stateChanged || frameChanged,
     };
   }

@@ -162,7 +162,8 @@ function scheduleIdleEvents(): void {
   // 每 20-30 秒随机播放一个空闲动作
   const delay = 20000 + Math.random() * 10000;
   idleTimer = setTimeout(() => {
-    if (!isSleeping) {
+    // 只有在 idle 状态且没在睡觉时才触发空闲动作，避免打断互动动画
+    if (!isSleeping && stateMachine.currentStateId() === 'idle') {
       playRandomIdleAction();
     }
     scheduleIdleEvents();
