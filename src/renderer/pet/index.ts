@@ -110,11 +110,10 @@ type IdleAction = {
 };
 
 const idleActions: IdleAction[] = [
-  { id: 'blink', type: 'frame', weight: 5, durationMs: 350, stateId: 'blink' },
-  { id: 'head-tilt-left', type: 'css', weight: 2, durationMs: 1200, cssClass: 'idle-head-tilt-left' },
-  { id: 'head-tilt-right', type: 'css', weight: 2, durationMs: 1200, cssClass: 'idle-head-tilt-right' },
-  { id: 'body-sway', type: 'css', weight: 2, durationMs: 1500, cssClass: 'idle-body-sway' },
-  { id: 'stretch', type: 'css', weight: 1, durationMs: 1800, cssClass: 'idle-stretch' },
+  { id: 'blink', type: 'frame', weight: 6, durationMs: 350, stateId: 'blink' },
+  { id: 'head-tilt-left', type: 'css', weight: 3, durationMs: 1500, cssClass: 'idle-head-tilt-left' },
+  { id: 'head-tilt-right', type: 'css', weight: 3, durationMs: 1500, cssClass: 'idle-head-tilt-right' },
+  { id: 'stretch', type: 'css', weight: 2, durationMs: 2000, cssClass: 'idle-stretch' },
 ];
 
 const totalWeight = idleActions.reduce((sum, a) => sum + a.weight, 0);
@@ -138,7 +137,7 @@ function playRandomIdleAction(): void {
   if (action.type === 'frame' && action.stateId) {
     setState(action.stateId);
   } else if (action.type === 'css' && action.cssClass) {
-    wrapper.classList.remove('idle-head-tilt-left', 'idle-head-tilt-right', 'idle-body-sway', 'idle-stretch');
+    wrapper.classList.remove('idle-head-tilt-left', 'idle-head-tilt-right', 'idle-stretch');
     void wrapper.offsetWidth;
     wrapper.classList.add(action.cssClass);
     setTimeout(() => {
@@ -151,8 +150,8 @@ function playRandomIdleAction(): void {
 function scheduleIdleEvents(): void {
   if (idleTimer) clearTimeout(idleTimer);
 
-  // 每 10-20 秒随机播放一个空闲动作
-  const delay = 10000 + Math.random() * 10000;
+  // 每 20-30 秒随机播放一个空闲动作
+  const delay = 20000 + Math.random() * 10000;
   idleTimer = setTimeout(() => {
     playRandomIdleAction();
     scheduleIdleEvents();
@@ -256,8 +255,16 @@ function updateMouseOver(over: boolean): void {
   lastMouseOver = over;
   window.petAPI?.window.setMouseOver(over).catch(() => {});
 }
-sprite.addEventListener('mouseenter', () => updateMouseOver(true));
-sprite.addEventListener('mouseleave', () => updateMouseOver(false));
+
+// 用 mousemove 检测鼠标是否在猫身上（比 mouseenter/leave 更可靠）
+container.addEventListener('mousemove', (e) => {
+  const rect = sprite.getBoundingClientRect();
+  const over = e.clientX >= rect.left && e.clientX <= rect.right
+    && e.clientY >= rect.top && e.clientY <= rect.bottom;
+  updateMouseOver(over);
+});
+// 鼠标离开容器时确保恢复穿透
+container.addEventListener('mouseleave', () => updateMouseOver(false));
 
 // 监听状态活动
 let isMirrored = false;
