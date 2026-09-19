@@ -20,7 +20,7 @@ jobs:
           - os: macos-latest
             platform: darwin
             build-cmd: npm run package:mac
-            output-dir: out
+            output-dir: release
             zip-name: tuantuan-pet-darwin-arm64.zip
           - os: ubuntu-latest
             platform: linux
