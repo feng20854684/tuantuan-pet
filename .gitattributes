@@ -1,0 +1,9 @@
+# Force LF line endings for all text files to keep SHA-256 hashes consistent across platforms
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.icns binary
