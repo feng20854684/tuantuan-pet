@@ -1,0 +1,1727 @@
+{
+  "schemaVersion": 5,
+  "scope": "all",
+  "backgroundMode": "semantic-cutout",
+  "segmentationBackend": "auto",
+  "subjectKind": "illustration",
+  "generationBackground": "transparent-grid",
+  "threshold": 24,
+  "feather": 8,
+  "safeMargin": 32,
+  "targetOccupancy": 0.76,
+  "trayIcon": {
+    "path": "src/assets/tray/tray-icon.png",
+    "width": 32,
+    "height": 32
+  },
+  "assets": [
+    {
+      "ok": true,
+      "name": "idle-1.png",
+      "state": "idle",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.311828856857803,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.3876443229570397,
+      "sourceBounds": [
+        56,
+        41,
+        1020,
+        1056
+      ],
+      "sharedScale": 0.38025415444770283,
+      "normalizationCorrection": 0.9974093264248705,
+      "referenceVisibleSize": [
+        357,
+        385
+      ],
+      "groupSourceMaximum": [
+        1008,
+        1023
+      ],
+      "outputBounds": [
+        73,
+        126,
+        438,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "idle-2.png",
+      "state": "idle",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3264955497794581,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.3859039705813899,
+      "sourceBounds": [
+        40,
+        41,
+        1047,
+        1063
+      ],
+      "sharedScale": 0.38025415444770283,
+      "normalizationCorrection": 0.9897172236503856,
+      "referenceVisibleSize": [
+        357,
+        385
+      ],
+      "groupSourceMaximum": [
+        1008,
+        1023
+      ],
+      "outputBounds": [
+        67,
+        126,
+        445,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "idle-3.png",
+      "state": "idle",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.25548975399075824,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4246384242579618,
+      "sourceBounds": [
+        218,
+        55,
+        963,
+        1037
+      ],
+      "sharedScale": 0.38025415444770283,
+      "normalizationCorrection": 1.0294117647058822,
+      "referenceVisibleSize": [
+        357,
+        385
+      ],
+      "groupSourceMaximum": [
+        1008,
+        1023
+      ],
+      "outputBounds": [
+        110,
+        126,
+        401,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "idle-4.png",
+      "state": "idle",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.32109604731148916,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.42213621806799145,
+      "sourceBounds": [
+        62,
+        46,
+        978,
+        1056
+      ],
+      "sharedScale": 0.38025415444770283,
+      "normalizationCorrection": 1.0026041666666667,
+      "referenceVisibleSize": [
+        357,
+        385
+      ],
+      "groupSourceMaximum": [
+        1008,
+        1023
+      ],
+      "outputBounds": [
+        81,
+        126,
+        430,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "idle-5.png",
+      "state": "idle",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.32305532582440666,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.414351530305135,
+      "sourceBounds": [
+        69,
+        45,
+        1007,
+        1056
+      ],
+      "sharedScale": 0.38025415444770283,
+      "normalizationCorrection": 1,
+      "referenceVisibleSize": [
+        357,
+        385
+      ],
+      "groupSourceMaximum": [
+        1008,
+        1023
+      ],
+      "outputBounds": [
+        78,
+        126,
+        434,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "blink-1.png",
+      "state": "blink",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3185140332913253,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.38672690232956614,
+      "sourceBounds": [
+        50,
+        42,
+        1038,
+        1056
+      ],
+      "sharedScale": 0.3817468105986261,
+      "normalizationCorrection": 1,
+      "referenceVisibleSize": [
+        377,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1019
+      ],
+      "outputBounds": [
+        67,
+        124,
+        444,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "blink-2.png",
+      "state": "blink",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3230897854967444,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.3911382120281454,
+      "sourceBounds": [
+        41,
+        45,
+        1028,
+        1063
+      ],
+      "sharedScale": 0.3817468105986261,
+      "normalizationCorrection": 0.9948586118251928,
+      "referenceVisibleSize": [
+        377,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1019
+      ],
+      "outputBounds": [
+        69,
+        124,
+        443,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "blink-3.png",
+      "state": "blink",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3226311436672968,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4311105458882964,
+      "sourceBounds": [
+        106,
+        45,
+        1001,
+        1062
+      ],
+      "sharedScale": 0.3817468105986261,
+      "normalizationCorrection": 0.9948586118251928,
+      "referenceVisibleSize": [
+        377,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1019
+      ],
+      "outputBounds": [
+        86,
+        124,
+        425,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "blink-4.png",
+      "state": "blink",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.32317511420919975,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.3935493991215625,
+      "sourceBounds": [
+        54,
+        45,
+        1042,
+        1056
+      ],
+      "sharedScale": 0.3817468105986261,
+      "normalizationCorrection": 1.0025906735751295,
+      "referenceVisibleSize": [
+        377,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1019
+      ],
+      "outputBounds": [
+        67,
+        124,
+        445,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "blink-5.png",
+      "state": "blink",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.32247033186305396,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.39997069155713316,
+      "sourceBounds": [
+        59,
+        45,
+        1029,
+        1056
+      ],
+      "sharedScale": 0.3817468105986261,
+      "normalizationCorrection": 1.0025906735751295,
+      "referenceVisibleSize": [
+        377,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1019
+      ],
+      "outputBounds": [
+        76,
+        124,
+        436,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "tap-happy-1.png",
+      "state": "tap-happy",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.32245638390044107,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4020235435641863,
+      "sourceBounds": [
+        66,
+        45,
+        1031,
+        1056
+      ],
+      "sharedScale": 0.3824975417895772,
+      "normalizationCorrection": 0.9462786973394157,
+      "referenceVisibleSize": [
+        333,
+        384
+      ],
+      "groupSourceMaximum": [
+        966,
+        1017
+      ],
+      "outputBounds": [
+        82,
+        145,
+        430,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "tap-happy-2.png",
+      "state": "tap-happy",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.324755336326402,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.45764322704395755,
+      "sourceBounds": [
+        109,
+        45,
+        979,
+        1037
+      ],
+      "sharedScale": 0.3824975417895772,
+      "normalizationCorrection": 1.0052493799000692,
+      "referenceVisibleSize": [
+        333,
+        384
+      ],
+      "groupSourceMaximum": [
+        966,
+        1017
+      ],
+      "outputBounds": [
+        89,
+        129,
+        423,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "tap-happy-3.png",
+      "state": "tap-happy",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.2678714424490653,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.43090222785344734,
+      "sourceBounds": [
+        144,
+        55,
+        983,
+        956
+      ],
+      "sharedScale": 0.3824975417895772,
+      "normalizationCorrection": 1.0745476165586754,
+      "referenceVisibleSize": [
+        333,
+        384
+      ],
+      "groupSourceMaximum": [
+        966,
+        1017
+      ],
+      "outputBounds": [
+        84,
+        140,
+        428,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "tap-happy-4.png",
+      "state": "tap-happy",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3113800606490233,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4354388464940814,
+      "sourceBounds": [
+        122,
+        40,
+        978,
+        1056
+      ],
+      "sharedScale": 0.3824975417895772,
+      "normalizationCorrection": 1.0010966461599307,
+      "referenceVisibleSize": [
+        333,
+        384
+      ],
+      "groupSourceMaximum": [
+        966,
+        1017
+      ],
+      "outputBounds": [
+        92,
+        122,
+        419,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "tap-happy-5.png",
+      "state": "tap-happy",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.320988565952531,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.41986634284444835,
+      "sourceBounds": [
+        54,
+        54,
+        982,
+        1056
+      ],
+      "sharedScale": 0.3824975417895772,
+      "normalizationCorrection": 0.9685185434539105,
+      "referenceVisibleSize": [
+        333,
+        384
+      ],
+      "groupSourceMaximum": [
+        966,
+        1017
+      ],
+      "outputBounds": [
+        84,
+        139,
+        427,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "pet-head-1.png",
+      "state": "pet-head",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.31021171366309597,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.5054260063310091,
+      "sourceBounds": [
+        162,
+        46,
+        937,
+        1009
+      ],
+      "sharedScale": 0.3828740157480315,
+      "normalizationCorrection": 1.1384058187495927,
+      "referenceVisibleSize": [
+        367,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1016
+      ],
+      "outputBounds": [
+        100,
+        122,
+        412,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "pet-head-2.png",
+      "state": "pet-head",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.31671310517748374,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.38607059416555983,
+      "sourceBounds": [
+        51,
+        45,
+        1038,
+        1056
+      ],
+      "sharedScale": 0.3828740157480315,
+      "normalizationCorrection": 0.9853423115341545,
+      "referenceVisibleSize": [
+        367,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1016
+      ],
+      "outputBounds": [
+        70,
+        130,
+        441,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "pet-head-3.png",
+      "state": "pet-head",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3117968585906322,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.37819857009784796,
+      "sourceBounds": [
+        59,
+        41,
+        1047,
+        1056
+      ],
+      "sharedScale": 0.3828740157480315,
+      "normalizationCorrection": 0.9815085994080714,
+      "referenceVisibleSize": [
+        367,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1016
+      ],
+      "outputBounds": [
+        70,
+        129,
+        441,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "pet-head-4.png",
+      "state": "pet-head",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3267219990548204,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.42507808480340564,
+      "sourceBounds": [
+        78,
+        54,
+        1011,
+        1056
+      ],
+      "sharedScale": 0.3828740157480315,
+      "normalizationCorrection": 1.0164391612072776,
+      "referenceVisibleSize": [
+        367,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1016
+      ],
+      "outputBounds": [
+        75,
+        122,
+        437,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "pet-head-5.png",
+      "state": "pet-head",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.32231116099558915,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.40519816481965887,
+      "sourceBounds": [
+        59,
+        45,
+        1016,
+        1056
+      ],
+      "sharedScale": 0.3828740157480315,
+      "normalizationCorrection": 1,
+      "referenceVisibleSize": [
+        367,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1016
+      ],
+      "outputBounds": [
+        73,
+        124,
+        439,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "feed-fish-1.png",
+      "state": "feed-fish",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3231160404851922,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.45221330393744186,
+      "sourceBounds": [
+        124,
+        45,
+        981,
+        1059
+      ],
+      "sharedScale": 0.38212180746561886,
+      "normalizationCorrection": 1.0360722709182757,
+      "referenceVisibleSize": [
+        353,
+        387
+      ],
+      "groupSourceMaximum": [
+        970,
+        1018
+      ],
+      "outputBounds": [
+        92,
+        122,
+        420,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "feed-fish-2.png",
+      "state": "feed-fish",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.2865576100084016,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4266648260899309,
+      "sourceBounds": [
+        74,
+        45,
+        999,
+        928
+      ],
+      "sharedScale": 0.38212180746561886,
+      "normalizationCorrection": 1.0685204885728912,
+      "referenceVisibleSize": [
+        353,
+        387
+      ],
+      "groupSourceMaximum": [
+        970,
+        1018
+      ],
+      "outputBounds": [
+        67,
+        150,
+        444,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "feed-fish-3.png",
+      "state": "feed-fish",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3229535877441714,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4236542752249736,
+      "sourceBounds": [
+        65,
+        46,
+        983,
+        1056
+      ],
+      "sharedScale": 0.38212180746561886,
+      "normalizationCorrection": 1.0041431376780543,
+      "referenceVisibleSize": [
+        353,
+        387
+      ],
+      "groupSourceMaximum": [
+        970,
+        1018
+      ],
+      "outputBounds": [
+        80,
+        123,
+        431,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "feed-fish-4.png",
+      "state": "feed-fish",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.32337776990128125,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4066900827128494,
+      "sourceBounds": [
+        65,
+        41,
+        1016,
+        1058
+      ],
+      "sharedScale": 0.38212180746561886,
+      "normalizationCorrection": 0.9822393818342247,
+      "referenceVisibleSize": [
+        353,
+        387
+      ],
+      "groupSourceMaximum": [
+        970,
+        1018
+      ],
+      "outputBounds": [
+        77,
+        129,
+        434,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "feed-fish-5.png",
+      "state": "feed-fish",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.33135272264230203,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.40979178504748764,
+      "sourceBounds": [
+        51,
+        41,
+        1020,
+        1056
+      ],
+      "sharedScale": 0.38212180746561886,
+      "normalizationCorrection": 0.974181813293562,
+      "referenceVisibleSize": [
+        353,
+        387
+      ],
+      "groupSourceMaximum": [
+        970,
+        1018
+      ],
+      "outputBounds": [
+        76,
+        133,
+        436,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "feed-fish-6.png",
+      "state": "feed-fish",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3122989852446965,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4597285362990304,
+      "sourceBounds": [
+        59,
+        55,
+        980,
+        952
+      ],
+      "sharedScale": 0.38212180746561886,
+      "normalizationCorrection": 1.0637129424613172,
+      "referenceVisibleSize": [
+        353,
+        387
+      ],
+      "groupSourceMaximum": [
+        970,
+        1018
+      ],
+      "outputBounds": [
+        69,
+        146,
+        442,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "play-wand-1.png",
+      "state": "play-wand",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.31733419974795213,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4544420579678813,
+      "sourceBounds": [
+        115,
+        45,
+        955,
+        1056
+      ],
+      "sharedScale": 0.3832512315270936,
+      "normalizationCorrection": 1.0268144068364822,
+      "referenceVisibleSize": [
+        339.5,
+        388
+      ],
+      "groupSourceMaximum": [
+        964,
+        1015
+      ],
+      "outputBounds": [
+        94,
+        174,
+        417,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "play-wand-2.png",
+      "state": "play-wand",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3045283291325352,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4269648962163008,
+      "sourceBounds": [
+        145,
+        45,
+        1003,
+        1056
+      ],
+      "sharedScale": 0.3832512315270936,
+      "normalizationCorrection": 1.0158321188154178,
+      "referenceVisibleSize": [
+        339.5,
+        388
+      ],
+      "groupSourceMaximum": [
+        964,
+        1015
+      ],
+      "outputBounds": [
+        91,
+        122,
+        420,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "play-wand-3.png",
+      "state": "play-wand",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.2561444877651754,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4995255840596244,
+      "sourceBounds": [
+        89,
+        257,
+        1025,
+        923
+      ],
+      "sharedScale": 0.3832512315270936,
+      "normalizationCorrection": 1.1972050639640055,
+      "referenceVisibleSize": [
+        339.5,
+        388
+      ],
+      "groupSourceMaximum": [
+        964,
+        1015
+      ],
+      "outputBounds": [
+        62,
+        234,
+        450,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "play-wand-4.png",
+      "state": "play-wand",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.2927898878911993,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.5400836027266234,
+      "sourceBounds": [
+        188,
+        54,
+        943,
+        927
+      ],
+      "sharedScale": 0.3832512315270936,
+      "normalizationCorrection": 1.1644325838830887,
+      "referenceVisibleSize": [
+        339.5,
+        388
+      ],
+      "groupSourceMaximum": [
+        964,
+        1015
+      ],
+      "outputBounds": [
+        88,
+        122,
+        424,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "play-wand-5.png",
+      "state": "play-wand",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.29949065322411256,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.37305970606872024,
+      "sourceBounds": [
+        59,
+        45,
+        1022,
+        1059
+      ],
+      "sharedScale": 0.3832512315270936,
+      "normalizationCorrection": 0.9579608669713922,
+      "referenceVisibleSize": [
+        339.5,
+        388
+      ],
+      "groupSourceMaximum": [
+        964,
+        1015
+      ],
+      "outputBounds": [
+        80,
+        138,
+        432,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "play-wand-6.png",
+      "state": "play-wand",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.33462475057760976,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.44141279454865817,
+      "sourceBounds": [
+        106,
+        45,
+        1018,
+        1056
+      ],
+      "sharedScale": 0.3832512315270936,
+      "normalizationCorrection": 0.9848857801796105,
+      "referenceVisibleSize": [
+        339.5,
+        388
+      ],
+      "groupSourceMaximum": [
+        964,
+        1015
+      ],
+      "outputBounds": [
+        84,
+        129,
+        428,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "notify-1.png",
+      "state": "notify",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3246527777777778,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.41114616193480547,
+      "sourceBounds": [
+        59,
+        45,
+        1009,
+        1056
+      ],
+      "sharedScale": 0.3832512315270936,
+      "normalizationCorrection": 1,
+      "referenceVisibleSize": [
+        364,
+        388
+      ],
+      "groupSourceMaximum": [
+        970,
+        1015
+      ],
+      "outputBounds": [
+        74,
+        123,
+        437,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "notify-2.png",
+      "state": "notify",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3170380106595253,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4136436428721295,
+      "sourceBounds": [
+        103,
+        46,
+        1026,
+        1056
+      ],
+      "sharedScale": 0.3832512315270936,
+      "normalizationCorrection": 1.0153351962111425,
+      "referenceVisibleSize": [
+        364,
+        388
+      ],
+      "groupSourceMaximum": [
+        970,
+        1015
+      ],
+      "outputBounds": [
+        84,
+        122,
+        427,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "notify-3.png",
+      "state": "notify",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3019151373135896,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4723274751115424,
+      "sourceBounds": [
+        146,
+        46,
+        949,
+        1014
+      ],
+      "sharedScale": 0.3832512315270936,
+      "normalizationCorrection": 1.1117425851312062,
+      "referenceVisibleSize": [
+        364,
+        388
+      ],
+      "groupSourceMaximum": [
+        970,
+        1015
+      ],
+      "outputBounds": [
+        95,
+        134,
+        417,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "notify-4.png",
+      "state": "notify",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3688842286284394,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4580740801116652,
+      "sourceBounds": [
+        50,
+        45,
+        1016,
+        1059
+      ],
+      "sharedScale": 0.3832512315270936,
+      "normalizationCorrection": 0.9892471304210697,
+      "referenceVisibleSize": [
+        364,
+        388
+      ],
+      "groupSourceMaximum": [
+        970,
+        1015
+      ],
+      "outputBounds": [
+        73,
+        126,
+        439,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "notify-5.png",
+      "state": "notify",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.31153759057971014,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.3868088097469541,
+      "sourceBounds": [
+        54,
+        45,
+        1023,
+        1056
+      ],
+      "sharedScale": 0.3832512315270936,
+      "normalizationCorrection": 0.9891888715790903,
+      "referenceVisibleSize": [
+        364,
+        388
+      ],
+      "groupSourceMaximum": [
+        970,
+        1015
+      ],
+      "outputBounds": [
+        72,
+        127,
+        439,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "edge-peek-1.png",
+      "state": "edge-peek",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.2976404970069313,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.3657830523513753,
+      "sourceBounds": [
+        59,
+        45,
+        1038,
+        1056
+      ],
+      "sharedScale": 0.3824975417895772,
+      "normalizationCorrection": 1,
+      "referenceVisibleSize": [
+        375,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1017
+      ],
+      "outputBounds": [
+        69,
+        124,
+        443,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "edge-peek-2.png",
+      "state": "edge-peek",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.26194273787019534,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.40866273867780467,
+      "sourceBounds": [
+        112,
+        45,
+        1010,
+        913
+      ],
+      "sharedScale": 0.3824975417895772,
+      "normalizationCorrection": 1.1272567725790346,
+      "referenceVisibleSize": [
+        375,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1017
+      ],
+      "outputBounds": [
+        62,
+        137,
+        449,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "edge-peek-3.png",
+      "state": "edge-peek",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3789694260659525,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.4592245278197836,
+      "sourceBounds": [
+        65,
+        40,
+        1053,
+        1056
+      ],
+      "sharedScale": 0.3824975417895772,
+      "normalizationCorrection": 0.9934600689291638,
+      "referenceVisibleSize": [
+        375,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1017
+      ],
+      "outputBounds": [
+        68,
+        125,
+        443,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "edge-peek-4.png",
+      "state": "edge-peek",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.2604158461982777,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.44173996548460726,
+      "sourceBounds": [
+        281,
+        45,
+        990,
+        1056
+      ],
+      "sharedScale": 0.3824975417895772,
+      "normalizationCorrection": 1.1741705457846552,
+      "referenceVisibleSize": [
+        375,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1017
+      ],
+      "outputBounds": [
+        126,
+        147,
+        385,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "edge-peek-5.png",
+      "state": "edge-peek",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "backgroundPalette": [],
+      "borderCoverage": 1,
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.32676712481621506,
+      "backgroundLikeForegroundRatio": 0,
+      "rectangularFill": 0.3987115698425252,
+      "sourceBounds": [
+        59,
+        46,
+        1047,
+        1055
+      ],
+      "sharedScale": 0.3824975417895772,
+      "normalizationCorrection": 0.997313192902426,
+      "referenceVisibleSize": [
+        375,
+        387
+      ],
+      "groupSourceMaximum": [
+        989,
+        1017
+      ],
+      "outputBounds": [
+        68,
+        126,
+        444,
+        510
+      ]
+    },
+    {
+      "ok": true,
+      "name": "core-ip.png",
+      "state": "core-ip",
+      "cutoutBackend": "existing-alpha",
+      "cutoutCached": false,
+      "cutoutAttempts": [],
+      "backgroundInput": "real-alpha",
+      "sourceSize": [
+        1104,
+        1104
+      ],
+      "foregroundRatio": 0.3281110520373871,
+      "rectangularFill": 0.3847627386083744,
+      "sourceBounds": [
+        40,
+        40,
+        1054,
+        1063
+      ],
+      "sharedScale": 0.3798828125,
+      "outputBounds": [
+        63,
+        96,
+        448,
+        484
+      ]
+    }
+  ]
+}
