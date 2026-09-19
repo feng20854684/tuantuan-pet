@@ -21,7 +21,7 @@
     "tools/doctor.mjs": "2f79b020df8f71522d735802c1095f104e6438fe7b2629ebb6fd99dcf2f0d565",
     "tools/inspect-assets.mjs": "2b70044609d3868913ec0db7ba69470078d843fcfa5e7b7a9cabfbbc9e67f5a5",
     "package.json": "6662452c3b64c17cdb53f8df8c65fb6184c30a21f2c7ea9ae14818917020caac",
-    "package-lock.json": "cf2af425458222fffec52434e473b1faa4f2b8b2c117a3a8ecb3afb09d1ff4fe",
+    "package-lock.json": "248f6cc933e4095209bb43116df39f09b91078ea62f8d7cedbc9641589eff140",
     "src/shared/contracts.ts": "dc4fe5f09cb304b2eb91cee7138d69dd61fceaaf69b74c71c6090dbb327a1969",
     "src/renderer/pet/index.ts": "a9d5e3786259c3e0f0c0b3063d78ac4790c9aa2973dbd4867be39a211fa4fa13",
     "tests/e2e/app.e2e.ts": "549b49b032dc04bec78267f5dd8e4d31fd73bd0b5d2ad424fa9bdb0f11789ff4",
