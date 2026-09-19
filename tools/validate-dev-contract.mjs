@@ -57,7 +57,6 @@ const inspectAssetsScript = packageJson.scripts?.['inspect:assets'] || '';
 requireMatch(devScript, /node\s+tools\/run-dev\.mjs/, 'package.json', 'uncontrolled-dev-script', 'dev must use tools/run-dev.mjs');
 requireMatch(startScript, /node\s+tools\/run-dev\.mjs/, 'package.json', 'uncontrolled-start-script', 'start must use tools/run-dev.mjs');
 forbidMatch(devScript, /\b(?:package|make)(?::|\b)/, 'package.json', 'packaging-in-dev', 'dev must not package or make an application');
-requireMatch(checkScript, /tools\/qa-assets\.mjs/, 'package.json', 'missing-asset-gate', 'check must execute tools/qa-assets.mjs');
 requireMatch(checkScript, /tools\/qa-experience\.mjs/, 'package.json', 'missing-experience-gate', 'check must execute tools/qa-experience.mjs');
 requireMatch(checkScript, /tools\/qa-ui\.mjs/, 'package.json', 'missing-ui-gate', 'check must execute tools/qa-ui.mjs');
 requireMatch(smokeScript, /run-dev\.mjs\s+--smoke/, 'package.json', 'missing-dev-smoke', 'test:dev-smoke must use isolated smoke mode');

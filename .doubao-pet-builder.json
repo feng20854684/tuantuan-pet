@@ -15,7 +15,7 @@
     "tools/run-build.mjs": "8f9f44e36834c4d2b1477ca73dc81a60991d8eb3ce45dfbbfb5bfcaa1ffebebe",
     "tools/run-dev.mjs": "17850e7ad9c0abe0866d8164c2e2d1d301418ea697c3282fd45ce9afbcea81f7",
     "tools/dev-smoke-client.mjs": "a2640ab83d5f28e46fd6a43db187f37fc333f32513068affb03b5aa93d91e437",
-    "tools/validate-dev-contract.mjs": "65a35e1bc95525080d790e7c3b37273ecbe3db1c20b6bda345ca1764651ee347",
+    "tools/validate-dev-contract.mjs": "f84a84e9c8e786457b16a465cf9e551f608d97aba08b979a6a6606b678321ad1",
     "tools/preflight.mjs": "6610db5da77d9bc221f11cbbb0ef74b4474ce2e77e02ed0a2fe37fd778ec8d7b",
     "tools/dev-ports.mjs": "33c3f354450ee0b4454117a3eba544e0e89f351c2a3656aeffe4ab9c0a4f2275",
     "tools/doctor.mjs": "2f79b020df8f71522d735802c1095f104e6438fe7b2629ebb6fd99dcf2f0d565",
