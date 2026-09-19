@@ -1,0 +1,83 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: win32
+            build-cmd: npm run package:win
+            artifact-dir: release
+            asset-name: tuantuan-pet-win32-x64
+          - os: macos-latest
+            platform: darwin
+            build-cmd: npm run package:mac
+            artifact-dir: out
+            asset-name: tuantuan-pet-darwin-arm64
+          - os: ubuntu-latest
+            platform: linux
+            build-cmd: npx electron-forge package
+            artifact-dir: out
+            asset-name: tuantuan-pet-linux-x64
+
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run checks
+        run: npm run check
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Build
+        env:
+          PET_BUILD_AUTHORIZED: '1'
+        run: ${{ matrix.build-cmd }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.asset-name }}
+          path: ${{ matrix.artifact-dir }}
+          retention-days: 7
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            artifacts/**/*
