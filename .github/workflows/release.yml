@@ -17,16 +17,6 @@ jobs:
             build-cmd: npm run package:win
             output-dir: release
             zip-name: tuantuan-pet-win32-x64.zip
-          - os: macos-latest
-            platform: darwin
-            build-cmd: npm run package:mac
-            output-dir: release
-            zip-name: tuantuan-pet-darwin-arm64.zip
-          - os: ubuntu-latest
-            platform: linux
-            build-cmd: npx electron-forge package
-            output-dir: out
-            zip-name: tuantuan-pet-linux-x64.zip
 
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
