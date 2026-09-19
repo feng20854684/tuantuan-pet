@@ -205,6 +205,9 @@ export interface PetAPI {
     onStats: (listener: (stats: PetStats) => void) => () => void;
     onTypingStatus: (listener: (status: TypingStatus) => void) => () => void;
   };
+  debug: {
+    playState: (stateId: string, durationMs?: number) => Promise<void>;
+  };
 }
 
 declare global {

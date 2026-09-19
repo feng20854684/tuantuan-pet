@@ -2,8 +2,12 @@ import spec from '../../../pet-spec.json';
 import type { PetSpec, PetStats, Settings, InteractionSpec } from '../../shared/contracts';
 import './index.css';
 
-// 用于 asset link 检查的占位符（实际不需要导入所有图片）
-// require.context('../../assets/pet', true, /\.png$/);
+// 用于 asset link 检查的占位符
+const assetContext = require.context('../../assets/pet', true, /\.png$/i);
+const assetMap = new Map<string, string>();
+for (const key of assetContext.keys()) {
+  assetMap.set(key.replace(/^\.\//, ''), assetContext(key));
+}
 
 const petSpec = spec as PetSpec;
 document.title = `${petSpec.character.displayName}的小屋`;
@@ -180,6 +184,105 @@ sizeSelector.addEventListener('click', async (e) => {
 window.petAPI?.events.onStats((stats: PetStats) => {
   updateStats(stats);
 });
+
+// ===== 动画预览模式 =====
+const previewImg = document.getElementById('preview-img') as HTMLImageElement;
+const previewLabel = document.getElementById('preview-label') as HTMLDivElement;
+const stateGrid = document.getElementById('state-grid') as HTMLDivElement;
+const btnCycle = document.getElementById('btn-cycle') as HTMLButtonElement;
+const btnStop = document.getElementById('btn-stop') as HTMLButtonElement;
+
+let previewTimer: ReturnType<typeof setTimeout> | null = null;
+let cycleTimer: ReturnType<typeof setTimeout> | null = null;
+let cycleIndex = 0;
+
+const stateOrder = petSpec.states.map((s) => s.id);
+
+function stopPreview(): void {
+  if (previewTimer) { clearTimeout(previewTimer); previewTimer = null; }
+  if (cycleTimer) { clearTimeout(cycleTimer); cycleTimer = null; }
+  btnCycle.classList.remove('active');
+}
+
+function playStateLocally(stateId: string): void {
+  stopPreview();
+  const state = petSpec.states.find((s) => s.id === stateId);
+  if (!state) return;
+
+  previewLabel.textContent = stateId;
+  document.querySelectorAll('.state-btn').forEach((b) => b.classList.toggle('active', (b as HTMLElement).dataset.stateId === stateId));
+
+  let frameIdx = 0;
+  const totalFrames = state.frames.length;
+  const frameDur = state.frameDurationMs;
+  const frames = state.frames;
+
+  function showFrame(): void {
+    const frameName = frames[frameIdx];
+    if (frameName) {
+      const url = assetMap.get(frameName);
+      if (url) previewImg.src = url;
+    }
+    frameIdx++;
+    if (frameIdx < totalFrames) {
+      previewTimer = setTimeout(showFrame, frameDur);
+    }
+  }
+  showFrame();
+}
+
+function playStateOnPet(stateId: string): void {
+  const state = petSpec.states.find((s) => s.id === stateId);
+  const dur = state ? Math.max(800, state.frames.length * state.frameDurationMs) : undefined;
+  window.petAPI?.debug.playState(stateId, dur).catch((err) => console.error('debug playState failed:', err));
+}
+
+function cycleNext(): void {
+  if (cycleIndex >= stateOrder.length) cycleIndex = 0;
+  const stateId = stateOrder[cycleIndex] ?? 'idle';
+  playStateLocally(stateId);
+  playStateOnPet(stateId);
+  cycleIndex++;
+
+  const state = petSpec.states.find((s) => s.id === stateId);
+  const totalDur = state ? state.frames.length * state.frameDurationMs + 500 : 2000;
+  cycleTimer = setTimeout(cycleNext, totalDur);
+}
+
+function startCycle(): void {
+  stopPreview();
+  cycleIndex = 0;
+  btnCycle.classList.add('active');
+  cycleNext();
+}
+
+// 创建状态按钮
+for (const state of petSpec.states) {
+  const btn = document.createElement('button');
+  btn.className = 'state-btn';
+  btn.dataset.stateId = state.id;
+  btn.textContent = state.id;
+  btn.addEventListener('click', () => {
+    playStateLocally(state.id);
+    playStateOnPet(state.id);
+  });
+  stateGrid.appendChild(btn);
+}
+
+btnCycle.addEventListener('click', () => {
+  if (cycleTimer) { stopPreview(); } else { startCycle(); }
+});
+btnStop.addEventListener('click', () => {
+  stopPreview();
+  playStateLocally('idle');
+  playStateOnPet('idle');
+});
+
+// 初始化显示 idle 第一帧
+const idleFrame = petSpec.states.find((s) => s.id === 'idle')?.frames[0];
+if (idleFrame && assetMap.get(idleFrame)) previewImg.src = assetMap.get(idleFrame)!;
+previewLabel.textContent = 'idle';
+stateGrid.querySelector('[data-state-id="idle"]')?.classList.add('active');
 
 // 初始化
 async function init(): Promise<void> {

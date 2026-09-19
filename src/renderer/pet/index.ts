@@ -115,7 +115,7 @@ container.addEventListener('click', () => {
     return;
   }
   playSquash();
-  setState('happy');
+  setState('tap-happy');
   scheduleIdleEvents();
 });
 

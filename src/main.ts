@@ -620,6 +620,14 @@ function registerIpc(): void {
   ipcMain.handle('window:hide-reminder', (event) => { assertSender(event, ['reminder']); reminderWindow?.hide(); });
   ipcMain.handle('window:hide-dashboard', (event) => { assertSender(event, ['dashboard']); dashboardWindow?.hide(); });
   ipcMain.handle('window:hide-pet', (event) => { assertSender(event, ['pet', 'dashboard']); petWindow?.hide(); });
+  ipcMain.handle('debug:play-state', (event, stateId: unknown, durationMs?: unknown) => {
+    assertSender(event, ['dashboard']);
+    if (typeof stateId !== 'string' || stateId.length > 100) throw new TypeError('Invalid stateId');
+    const state = spec.states.find((item) => item.id === stateId);
+    if (!state) throw new Error(`Unknown state: ${stateId}`);
+    const dur = typeof durationMs === 'number' && Number.isFinite(durationMs) && durationMs > 0 ? durationMs : undefined;
+    sendActivity({ kind: 'debug', stateId, durationMs: dur });
+  });
 }
 
 async function initialize(): Promise<void> {

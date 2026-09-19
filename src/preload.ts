@@ -49,6 +49,9 @@ const api: PetAPI = {
     onStats: (listener) => subscribe<PetStats>('pet:stats', listener),
     onTypingStatus: (listener) => subscribe<TypingStatus>('typing:status', listener),
   },
+  debug: {
+    playState: (stateId, durationMs) => ipcRenderer.invoke('debug:play-state', stateId, durationMs) as Promise<void>,
+  },
 };
 
 contextBridge.exposeInMainWorld('petAPI', api);

@@ -212,6 +212,75 @@
       background: var(--accent, #ffc987);
       border-radius: 2px;
     }
+    .preview-stage {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 12px;
+      background: var(--background, #fff7ed);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .preview-stage img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+    }
+    .preview-label {
+      position: absolute;
+      bottom: 6px;
+      right: 10px;
+      font-size: 11px;
+      color: var(--muted, #9a7b6a);
+      background: rgba(255,255,255,0.8);
+      padding: 2px 8px;
+      border-radius: 8px;
+    }
+    .state-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .state-btn {
+      padding: 6px 12px;
+      border: 1px solid var(--accent, #ffc987);
+      border-radius: 10px;
+      background: transparent;
+      color: var(--text, #3a2a20);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .state-btn:hover {
+      background: var(--accent, #ffc987);
+    }
+    .state-btn.active {
+      background: var(--primary, #ff8a24);
+      border-color: var(--primary, #ff8a24);
+      color: white;
+    }
+    .preview-controls {
+      display: flex;
+      gap: 8px;
+    }
+    .preview-btn {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      border-radius: 10px;
+      background: var(--background, #fff7ed);
+      color: var(--text, #3a2a20);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .preview-btn:hover {
+      background: var(--accent, #ffc987);
+    }
   </style>
 </head>
 <body>
@@ -249,6 +318,20 @@
         <div class="settings-group">
           <div class="section-title">✨ 互动</div>
           <div class="interactions" id="interactions-list">
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <div class="section-title">🎬 动画预览</div>
+          <div class="preview-stage">
+            <img id="preview-img" src="" alt="preview" />
+            <div class="preview-label" id="preview-label">idle</div>
+          </div>
+          <div class="state-grid" id="state-grid">
+          </div>
+          <div class="preview-controls">
+            <button class="preview-btn" id="btn-cycle">🔄 自动循环</button>
+            <button class="preview-btn" id="btn-stop">⏹ 停止</button>
           </div>
         </div>
 

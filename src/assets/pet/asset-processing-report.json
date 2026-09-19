@@ -629,29 +629,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.31021171366309597,
+      "foregroundRatio": 0.3175442396555346,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.5054260063310091,
+      "rectangularFill": 0.6333051884723886,
       "sourceBounds": [
-        162,
-        46,
-        937,
-        1009
+        167,
+        191,
+        968,
+        952
       ],
-      "sharedScale": 0.3828740157480315,
-      "normalizationCorrection": 1.1384058187495927,
+      "sharedScale": 0.44558991981672397,
+      "normalizationCorrection": 0.9941831148780975,
       "referenceVisibleSize": [
-        367,
-        387
+        356,
+        337
       ],
       "groupSourceMaximum": [
-        989,
-        1016
+        802,
+        873
       ],
       "outputBounds": [
-        100,
-        122,
-        412,
+        79,
+        173,
+        433,
         510
       ]
     },
@@ -669,29 +669,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.31671310517748374,
+      "foregroundRatio": 0.2676302247427011,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.38607059416555983,
+      "rectangularFill": 0.6169115839243499,
       "sourceBounds": [
-        51,
-        45,
-        1038,
-        1056
+        230,
+        201,
+        934,
+        950
       ],
-      "sharedScale": 0.3828740157480315,
-      "normalizationCorrection": 0.9853423115341545,
+      "sharedScale": 0.44558991981672397,
+      "normalizationCorrection": 1.069551969999587,
       "referenceVisibleSize": [
-        367,
-        387
+        356,
+        337
       ],
       "groupSourceMaximum": [
-        989,
-        1016
+        802,
+        873
       ],
       "outputBounds": [
-        70,
-        130,
-        441,
+        88,
+        154,
+        423,
         510
       ]
     },
@@ -709,29 +709,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.3117968585906322,
+      "foregroundRatio": 0.31783960827557234,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.37819857009784796,
+      "rectangularFill": 0.6404769502168332,
       "sourceBounds": [
-        59,
-        41,
-        1047,
-        1056
+        174,
+        194,
+        972,
+        950
       ],
-      "sharedScale": 0.3828740157480315,
-      "normalizationCorrection": 0.9815085994080714,
+      "sharedScale": 0.44558991981672397,
+      "normalizationCorrection": 1,
       "referenceVisibleSize": [
-        367,
-        387
+        356,
+        337
       ],
       "groupSourceMaximum": [
-        989,
-        1016
+        802,
+        873
       ],
       "outputBounds": [
-        70,
-        129,
-        441,
+        78,
+        174,
+        433,
         510
       ]
     },
@@ -749,29 +749,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.3267219990548204,
+      "foregroundRatio": 0.31545286573198905,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.42507808480340564,
+      "rectangularFill": 0.6412857104732931,
       "sourceBounds": [
-        78,
-        54,
-        1011,
-        1056
+        178,
+        192,
+        969,
+        948
       ],
-      "sharedScale": 0.3828740157480315,
-      "normalizationCorrection": 1.0164391612072776,
+      "sharedScale": 0.44558991981672397,
+      "normalizationCorrection": 1.004240301705426,
       "referenceVisibleSize": [
-        367,
-        387
+        356,
+        337
       ],
       "groupSourceMaximum": [
-        989,
-        1016
+        802,
+        873
       ],
       "outputBounds": [
-        75,
-        122,
-        437,
+        79,
+        173,
+        432,
         510
       ]
     },
@@ -789,29 +789,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.32231116099558915,
+      "foregroundRatio": 0.3199367254778408,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.40519816481965887,
+      "rectangularFill": 0.5576420081999448,
       "sourceBounds": [
-        59,
-        45,
-        1016,
-        1056
+        178,
+        80,
+        978,
+        952
       ],
-      "sharedScale": 0.3828740157480315,
-      "normalizationCorrection": 1,
+      "sharedScale": 0.44558991981672397,
+      "normalizationCorrection": 0.9294607199032642,
       "referenceVisibleSize": [
-        367,
-        387
+        356,
+        337
       ],
       "groupSourceMaximum": [
-        989,
-        1016
+        802,
+        873
       ],
       "outputBounds": [
-        73,
-        124,
-        439,
+        90,
+        149,
+        421,
         510
       ]
     },
@@ -1069,29 +1069,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.31733419974795213,
+      "foregroundRatio": 0.3203395754568368,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.4544420579678813,
+      "rectangularFill": 0.6477647152513015,
       "sourceBounds": [
-        115,
-        45,
-        955,
-        1056
+        183,
+        191,
+        973,
+        952
       ],
-      "sharedScale": 0.3832512315270936,
-      "normalizationCorrection": 1.0268144068364822,
+      "sharedScale": 0.4720873786407767,
+      "normalizationCorrection": 1.0033734430954433,
       "referenceVisibleSize": [
-        339.5,
-        388
+        375,
+        360.5
       ],
       "groupSourceMaximum": [
-        964,
-        1015
+        824,
+        766
       ],
       "outputBounds": [
-        94,
-        174,
-        417,
+        69,
+        150,
+        442,
         510
       ]
     },
@@ -1109,29 +1109,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.3045283291325352,
+      "foregroundRatio": 0.3317038831127914,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.4269648962163008,
+      "rectangularFill": 0.6405200385307612,
       "sourceBounds": [
-        145,
-        45,
-        1003,
-        1056
+        167,
+        187,
+        990,
+        952
       ],
-      "sharedScale": 0.3832512315270936,
-      "normalizationCorrection": 1.0158321188154178,
+      "sharedScale": 0.4720873786407767,
+      "normalizationCorrection": 0.9798039421384458,
       "referenceVisibleSize": [
-        339.5,
-        388
+        375,
+        360.5
       ],
       "groupSourceMaximum": [
-        964,
-        1015
+        824,
+        766
       ],
       "outputBounds": [
-        91,
-        122,
-        420,
+        66,
+        156,
+        446,
         510
       ]
     },
@@ -1149,29 +1149,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.2561444877651754,
+      "foregroundRatio": 0.30541771686620456,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.4995255840596244,
+      "rectangularFill": 0.6805576123223182,
       "sourceBounds": [
-        89,
-        257,
-        1025,
-        923
+        202,
+        179,
+        916,
+        943
       ],
-      "sharedScale": 0.3832512315270936,
-      "normalizationCorrection": 1.1972050639640055,
+      "sharedScale": 0.4720873786407767,
+      "normalizationCorrection": 1.0525829169692573,
       "referenceVisibleSize": [
-        339.5,
-        388
+        375,
+        360.5
       ],
       "groupSourceMaximum": [
-        964,
-        1015
+        824,
+        766
       ],
       "outputBounds": [
-        62,
-        234,
-        450,
+        78,
+        131,
+        433,
         510
       ]
     },
@@ -1189,29 +1189,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.2927898878911993,
+      "foregroundRatio": 0.3259359903381642,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.5400836027266234,
+      "rectangularFill": 0.6324523976310259,
       "sourceBounds": [
-        188,
-        54,
-        943,
-        927
+        158,
+        191,
+        977,
+        956
       ],
-      "sharedScale": 0.3832512315270936,
-      "normalizationCorrection": 1.1644325838830887,
+      "sharedScale": 0.4720873786407767,
+      "normalizationCorrection": 0.9823324726451528,
       "referenceVisibleSize": [
-        339.5,
-        388
+        375,
+        360.5
       ],
       "groupSourceMaximum": [
-        964,
-        1015
+        824,
+        766
       ],
       "outputBounds": [
-        88,
-        122,
-        424,
+        66,
+        155,
+        445,
         510
       ]
     },
@@ -1229,29 +1229,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.29949065322411256,
+      "foregroundRatio": 0.33252599243856334,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.37305970606872024,
+      "rectangularFill": 0.6691874077425277,
       "sourceBounds": [
-        59,
-        45,
-        1022,
-        1059
+        174,
+        191,
+        972,
+        948
       ],
-      "sharedScale": 0.3832512315270936,
-      "normalizationCorrection": 0.9579608669713922,
+      "sharedScale": 0.4720873786407767,
+      "normalizationCorrection": 1.000820240636865,
       "referenceVisibleSize": [
-        339.5,
-        388
+        375,
+        360.5
       ],
       "groupSourceMaximum": [
-        964,
-        1015
+        824,
+        766
       ],
       "outputBounds": [
-        80,
-        138,
-        432,
+        68,
+        153,
+        444,
         510
       ]
     },
@@ -1269,29 +1269,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.33462475057760976,
+      "foregroundRatio": 0.3081539789434993,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.44141279454865817,
+      "rectangularFill": 0.6777959445900196,
       "sourceBounds": [
-        106,
-        45,
-        1018,
-        1056
+        189,
+        191,
+        945,
+        922
       ],
-      "sharedScale": 0.3832512315270936,
-      "normalizationCorrection": 0.9848857801796105,
+      "sharedScale": 0.4720873786407767,
+      "normalizationCorrection": 1.0461551827716509,
       "referenceVisibleSize": [
-        339.5,
-        388
+        375,
+        360.5
       ],
       "groupSourceMaximum": [
-        964,
-        1015
+        824,
+        766
       ],
       "outputBounds": [
-        84,
-        129,
-        428,
+        70,
+        149,
+        442,
         510
       ]
     },
@@ -1509,29 +1509,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.2976404970069313,
+      "foregroundRatio": 0.317615620405377,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.3657830523513753,
+      "rectangularFill": 0.6530511371016855,
       "sourceBounds": [
-        59,
-        45,
-        1038,
-        1056
+        189,
+        191,
+        969,
+        949
       ],
-      "sharedScale": 0.3824975417895772,
+      "sharedScale": 0.4205405405405405,
       "normalizationCorrection": 1,
       "referenceVisibleSize": [
-        375,
-        387
+        328,
+        319
       ],
       "groupSourceMaximum": [
-        989,
-        1017
+        925,
+        851
       ],
       "outputBounds": [
-        69,
-        124,
-        443,
+        92,
+        192,
+        419,
         510
       ]
     },
@@ -1549,29 +1549,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.26194273787019534,
+      "foregroundRatio": 0.2742628911993279,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.40866273867780467,
+      "rectangularFill": 0.6096144727723675,
       "sourceBounds": [
-        112,
-        45,
-        1010,
-        913
+        233,
+        199,
+        973,
+        938
       ],
-      "sharedScale": 0.3824975417895772,
-      "normalizationCorrection": 1.1272567725790346,
+      "sharedScale": 0.4205405405405405,
+      "normalizationCorrection": 1.038424131265937,
       "referenceVisibleSize": [
-        375,
-        387
+        328,
+        319
       ],
       "groupSourceMaximum": [
-        989,
-        1017
+        925,
+        851
       ],
       "outputBounds": [
-        62,
-        137,
-        449,
+        94,
+        188,
+        417,
         510
       ]
     },
@@ -1589,29 +1589,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.3789694260659525,
+      "foregroundRatio": 0.38344672206469227,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.4592245278197836,
+      "rectangularFill": 0.6527704448634681,
       "sourceBounds": [
-        65,
         40,
-        1053,
-        1056
+        183,
+        964,
+        956
       ],
-      "sharedScale": 0.3824975417895772,
-      "normalizationCorrection": 0.9934600689291638,
+      "sharedScale": 0.4205405405405405,
+      "normalizationCorrection": 0.9097368406526453,
       "referenceVisibleSize": [
-        375,
-        387
+        328,
+        319
       ],
       "groupSourceMaximum": [
-        989,
-        1017
+        925,
+        851
       ],
       "outputBounds": [
-        68,
-        125,
-        443,
+        79,
+        215,
+        432,
         510
       ]
     },
@@ -1629,29 +1629,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.2604158461982777,
+      "foregroundRatio": 0.2584294922285234,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.44173996548460726,
+      "rectangularFill": 0.5931520985868812,
       "sourceBounds": [
-        281,
-        45,
-        990,
-        1056
+        252,
+        103,
+        875,
+        953
       ],
-      "sharedScale": 0.3824975417895772,
-      "normalizationCorrection": 1.1741705457846552,
+      "sharedScale": 0.4205405405405405,
+      "normalizationCorrection": 1.0561852652814454,
       "referenceVisibleSize": [
-        375,
-        387
+        328,
+        319
       ],
       "groupSourceMaximum": [
-        989,
-        1017
+        925,
+        851
       ],
       "outputBounds": [
-        126,
-        147,
-        385,
+        118,
+        133,
+        394,
         510
       ]
     },
@@ -1669,29 +1669,29 @@
         1104,
         1104
       ],
-      "foregroundRatio": 0.32676712481621506,
+      "foregroundRatio": 0.2637732028460407,
       "backgroundLikeForegroundRatio": 0,
-      "rectangularFill": 0.3987115698425252,
+      "rectangularFill": 0.5693169422131554,
       "sourceBounds": [
-        59,
-        46,
-        1047,
-        1055
+        171,
+        223,
+        962,
+        935
       ],
-      "sharedScale": 0.3824975417895772,
-      "normalizationCorrection": 0.997313192902426,
+      "sharedScale": 0.4205405405405405,
+      "normalizationCorrection": 1.0234096771905996,
       "referenceVisibleSize": [
-        375,
-        387
+        328,
+        319
       ],
       "groupSourceMaximum": [
-        989,
-        1017
+        925,
+        851
       ],
       "outputBounds": [
-        68,
-        126,
-        444,
+        86,
+        204,
+        426,
         510
       ]
     },
