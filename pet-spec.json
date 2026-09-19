@@ -3,7 +3,7 @@
   "app": {
     "name": "团团桌宠",
     "appId": "com.tuantuan.pet",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "language": "zh-CN"
   },
   "targets": {

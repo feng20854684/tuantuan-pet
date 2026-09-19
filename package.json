@@ -1,7 +1,7 @@
 {
   "name": "tuantuan-pet",
   "productName": "团团桌宠",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Secure cross-platform Electron desktop pet",
   "main": ".webpack/main",
   "private": true,
