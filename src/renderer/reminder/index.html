@@ -124,6 +124,24 @@
       background: var(--accent, #ffc987);
       border-radius: 2px;
     }
+    .quick-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .quick-btn {
+      padding: 6px 10px;
+      border: 1px solid var(--accent, #ffc987);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text, #3a2a20);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .quick-btn:hover {
+      background: var(--accent, #ffc987);
+    }
   </style>
 </head>
 <body>
@@ -133,6 +151,16 @@
       <div class="input-group">
         <label>提醒内容</label>
         <input type="text" id="reminder-text" placeholder="输入提醒内容...">
+      </div>
+      <div class="input-group">
+        <label>快速创建</label>
+        <div class="quick-row">
+          <button class="quick-btn" data-minutes="1">1分钟</button>
+          <button class="quick-btn" data-minutes="5">5分钟</button>
+          <button class="quick-btn" data-minutes="10">10分钟</button>
+          <button class="quick-btn" data-minutes="30">30分钟</button>
+          <button class="quick-btn" data-minutes="60">1小时</button>
+        </div>
       </div>
       <div class="input-group">
         <label>提醒时间</label>

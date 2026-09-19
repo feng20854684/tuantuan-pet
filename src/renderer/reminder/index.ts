@@ -62,6 +62,20 @@ cancelBtn.addEventListener('click', async () => {
   await window.petAPI?.window.hideReminder();
 });
 
+// 快速创建按钮
+document.querySelectorAll('.quick-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const minutes = Number((btn as HTMLButtonElement).dataset.minutes ?? 5);
+    const due = new Date(Date.now() + minutes * 60 * 1000);
+    const year = due.getFullYear();
+    const month = String(due.getMonth() + 1).padStart(2, '0');
+    const day = String(due.getDate()).padStart(2, '0');
+    const hours = String(due.getHours()).padStart(2, '0');
+    const mins = String(due.getMinutes()).padStart(2, '0');
+    timeInput.value = `${year}-${month}-${day}T${hours}:${mins}`;
+  });
+});
+
 // 监听提醒触发
 window.petAPI?.events.onReminder((reminder: Reminder) => {
   // 显示提醒

@@ -209,6 +209,10 @@ export interface PetAPI {
   debug: {
     playState: (stateId: string, durationMs?: number) => Promise<void>;
   };
+  data: {
+    export: () => Promise<string>;
+    import: () => Promise<string>;
+  };
 }
 
 declare global {

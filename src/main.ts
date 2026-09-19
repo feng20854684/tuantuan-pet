@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, Menu, nativeImage, screen, shell, Tray, type IpcMainInvokeEvent } from 'electron';
+import { app, BrowserWindow, dialog, ipcMain, Menu, nativeImage, screen, shell, Tray, type IpcMainInvokeEvent } from 'electron';
 import { copyFile, lstat, mkdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
@@ -495,6 +495,7 @@ function createTray(): void {
   tray.setContextMenu(Menu.buildFromTemplate([
     { label: `🐾 显示${spec.character.displayName}`, click: () => petWindow?.show() },
     { label: `🏠 ${spec.character.displayName}的小屋`, click: showDashboard },
+    { label: '⏰ 设置提醒', click: showReminderComposer },
     { label: settings.clickThrough ? '🖱️ 关闭鼠标穿透' : '🖱️ 开启鼠标穿透', click: () => void saveSettings({ ...settings, clickThrough: !settings.clickThrough }) },
     { type: 'separator' },
     { label: '🚪 退出', click: () => { isQuitting = true; app.quit(); } },
@@ -516,6 +517,7 @@ function createTrayMenuRefresh(): void {
   tray.setContextMenu(Menu.buildFromTemplate([
     { label: `🐾 显示${spec.character.displayName}`, click: () => petWindow?.show() },
     { label: `🏠 ${spec.character.displayName}的小屋`, click: showDashboard },
+    { label: '⏰ 设置提醒', click: showReminderComposer },
     { label: settings.clickThrough ? '🖱️ 关闭鼠标穿透' : '🖱️ 开启鼠标穿透', click: () => void saveSettings({ ...settings, clickThrough: !settings.clickThrough }) },
     { type: 'separator' },
     { label: '🚪 退出', click: () => { isQuitting = true; app.quit(); } },
@@ -577,6 +579,47 @@ async function openPocket(): Promise<void> {
   await mkdir(directory, { recursive: true });
   const failure = await shell.openPath(directory);
   if (failure) throw new Error(failure);
+}
+
+async function exportData(): Promise<string> {
+  const backup = {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    appName: spec.app.name,
+    settings,
+    stats,
+    reminders,
+  };
+  const window = BrowserWindow.getFocusedWindow() ?? petWindow;
+  const result = await dialog.showSaveDialog(window ?? new BrowserWindow(), {
+    title: '导出团团数据备份',
+    defaultPath: `tuantuan-backup-${new Date().toISOString().slice(0, 10)}.json`,
+    filters: [{ name: 'JSON 文件', extensions: ['json'] }],
+  });
+  if (result.canceled || !result.filePath) return '已取消';
+  await atomicWriteJson(result.filePath, backup);
+  return `已导出到 ${result.filePath}`;
+}
+
+async function importData(): Promise<string> {
+  const window = BrowserWindow.getFocusedWindow() ?? petWindow;
+  const result = await dialog.showOpenDialog(window ?? new BrowserWindow(), {
+    title: '导入团团数据备份',
+    filters: [{ name: 'JSON 文件', extensions: ['json'] }],
+    properties: ['openFile'],
+  });
+  if (result.canceled || !result.filePaths.length) return '已取消';
+  const content = await readFile(result.filePaths[0]!, 'utf8');
+  const backup = JSON.parse(content) as { settings?: unknown; stats?: unknown; reminders?: unknown };
+  if (backup.settings) settings = parseSettings(backup.settings);
+  if (backup.stats) stats = parsePersistedStats(backup.stats);
+  if (backup.reminders) reminders = parseReminders(backup.reminders);
+  await atomicWriteJson(userFile('settings.json'), settings);
+  await atomicWriteJson(userFile('pet-stats.json'), stats);
+  await atomicWriteJson(userFile('reminders.json'), reminders);
+  applyPetSettings();
+  broadcastStats();
+  return '导入成功';
 }
 
 function registerIpc(): void {
@@ -745,6 +788,8 @@ function registerIpc(): void {
     const dur = typeof durationMs === 'number' && Number.isFinite(durationMs) && durationMs > 0 ? durationMs : undefined;
     sendActivity({ kind: 'debug', stateId, durationMs: dur });
   });
+  ipcMain.handle('data:export', (event) => { assertSender(event, ['dashboard']); return exportData(); });
+  ipcMain.handle('data:import', (event) => { assertSender(event, ['dashboard']); return importData(); });
 }
 
 async function initialize(): Promise<void> {

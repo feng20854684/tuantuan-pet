@@ -53,6 +53,10 @@ const api: PetAPI = {
   debug: {
     playState: (stateId, durationMs) => ipcRenderer.invoke('debug:play-state', stateId, durationMs) as Promise<void>,
   },
+  data: {
+    export: () => ipcRenderer.invoke('data:export') as Promise<string>,
+    import: () => ipcRenderer.invoke('data:import') as Promise<string>,
+  },
 };
 
 contextBridge.exposeInMainWorld('petAPI', api);

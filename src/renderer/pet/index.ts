@@ -56,13 +56,29 @@ function playSquash(): void {
 }
 
 // 显示反馈气泡
-function showFeedback(text: string): void {
+function showFeedback(text: string, clickable = false): void {
   feedbackBubble.textContent = text;
   feedbackBubble.classList.add('show');
+  feedbackBubble.style.pointerEvents = clickable ? 'auto' : 'none';
+  if (clickable) {
+    feedbackBubble.style.cursor = 'pointer';
+  } else {
+    setTimeout(() => {
+      feedbackBubble.classList.remove('show');
+      feedbackBubble.style.pointerEvents = 'none';
+    }, 2000);
+  }
+}
+
+// 点击气泡打开提醒详情
+feedbackBubble.addEventListener('click', () => {
+  if (feedbackBubble.style.pointerEvents !== 'auto') return;
+  window.petAPI?.window.showReminder().catch(() => {});
   setTimeout(() => {
     feedbackBubble.classList.remove('show');
-  }, 2000);
-}
+    feedbackBubble.style.pointerEvents = 'none';
+  }, 100);
+});
 
 // 切换状态
 function setState(stateId: string, durationMs?: number): void {
@@ -193,7 +209,8 @@ window.petAPI?.events.onStateActivity((activity: StateActivity) => {
     scheduleIdleEvents();
   }
   if (activity.feedback) {
-    showFeedback(activity.feedback);
+    const isReminder = activity.kind === 'notify' || activity.kind === 'reminder';
+    showFeedback(activity.feedback, isReminder);
   }
 });
 

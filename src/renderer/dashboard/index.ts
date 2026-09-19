@@ -180,6 +180,29 @@ sizeSelector.addEventListener('click', async (e) => {
   }
 });
 
+// 数据导出/导入
+const btnExport = document.getElementById('btn-export') as HTMLButtonElement;
+const btnImport = document.getElementById('btn-import') as HTMLButtonElement;
+btnExport.addEventListener('click', async () => {
+  try {
+    const result = await window.petAPI?.data.export();
+    if (result) console.log(result);
+  } catch (error) {
+    console.error('Export failed:', error);
+  }
+});
+btnImport.addEventListener('click', async () => {
+  try {
+    const result = await window.petAPI?.data.import();
+    if (result) {
+      console.log(result);
+      await loadStats();
+    }
+  } catch (error) {
+    console.error('Import failed:', error);
+  }
+});
+
 // 监听统计数据更新
 window.petAPI?.events.onStats((stats: PetStats) => {
   updateStats(stats);
