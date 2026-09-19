@@ -33,7 +33,7 @@
     "portable:mac": "node tools/run-build.mjs portable-mac"
   },
   "author": "Desktop Pet Builder User",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "devDependencies": {
     "@electron-forge/cli": "^7.9.0",
     "@electron-forge/maker-dmg": "^7.9.0",
