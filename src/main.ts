@@ -321,7 +321,7 @@ function popOutFromEdge(): void {
   petWindow.setBounds(popped, true);
   edgeState = 'popped';
   const state = stateForTrigger('window:edge-snap');
-  sendActivity({ kind: 'edge-snap', stateId: state?.id, durationMs: 900 });
+  sendActivity({ kind: 'edge-snap', stateId: state?.id, durationMs: 900, mirror: edgeSide === 'right' });
   startEdgePolling();
 }
 
@@ -783,12 +783,13 @@ function registerIpc(): void {
         edgeState = 'hidden';
         startEdgePolling();
         const state = stateForTrigger('window:edge-snap');
-        sendActivity({ kind: 'edge-snap', stateId: state?.id, durationMs: 900 });
+        sendActivity({ kind: 'edge-snap', stateId: state?.id, durationMs: 900, mirror: side === 'right' });
       } else {
         edgeState = 'idle';
         edgeSide = null;
         stopEdgePolling();
         petWindow.setBounds(snapBounds(bounds, workArea), true);
+        sendActivity({ kind: 'edge-snap', mirror: false });
       }
     }
   });

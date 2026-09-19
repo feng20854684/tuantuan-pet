@@ -260,7 +260,18 @@ sprite.addEventListener('mouseenter', () => updateMouseOver(true));
 sprite.addEventListener('mouseleave', () => updateMouseOver(false));
 
 // 监听状态活动
+let isMirrored = false;
+
+function setMirror(mirrored: boolean): void {
+  if (isMirrored === mirrored) return;
+  isMirrored = mirrored;
+  wrapper.style.transform = mirrored ? 'scaleX(-1)' : '';
+}
+
 window.petAPI?.events.onStateActivity((activity: StateActivity) => {
+  if (activity.mirror !== undefined) {
+    setMirror(activity.mirror);
+  }
   if (activity.stateId) {
     setState(activity.stateId, activity.durationMs);
     scheduleIdleEvents();

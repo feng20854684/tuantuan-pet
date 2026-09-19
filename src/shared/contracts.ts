@@ -133,6 +133,7 @@ export interface StateActivity {
   stateId?: string;
   durationMs?: number;
   feedback?: string;
+  mirror?: boolean;
 }
 
 export interface RuntimeReadyReport {
