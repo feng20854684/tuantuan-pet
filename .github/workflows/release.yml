@@ -33,7 +33,7 @@ jobs:
         run: npm ci
 
       - name: Run checks
-        run: tsc --noEmit && node tools/validate-dev-contract.mjs && node tools/validate-spec.mjs && node tools/validate-asset-links.mjs && node tools/qa-ui.mjs && node tools/qa-experience.mjs
+        run: npx tsc --noEmit && node tools/validate-dev-contract.mjs && node tools/validate-spec.mjs && node tools/validate-asset-links.mjs && node tools/qa-ui.mjs && node tools/qa-experience.mjs
 
       - name: Run unit tests
         run: npm test
